@@ -13,6 +13,10 @@ description: Audit CRM records, opportunity notes, account fields, pipeline expo
 4. Recommend concrete updates, owner actions, validation steps, and follow-up questions.
 5. Produce a prioritized hygiene report that can be used by sales ops, managers, or account owners.
 
+## Script-Assisted Workflow
+
+When given a CRM CSV export, run `scripts/audit_crm_csv.py --input <csv>` before writing the audit. Adjust `--required-fields`, `--date-field`, `--stale-days`, and `--today` when the sales process defines different hygiene rules. Use `--json` for structured evidence. Do not let the script infer missing CRM values; use it to surface records that need human review.
+
 ## Output Standard
 
 Use this structure by default:

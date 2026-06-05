@@ -3,9 +3,10 @@
 
 from __future__ import annotations
 
-import re
-import sys
 import json
+import re
+import stat
+import sys
 from pathlib import Path
 
 try:
@@ -24,6 +25,57 @@ DISALLOWED_SKILL_DOCS = {
     "QUICK_REFERENCE.md",
     "CHANGELOG.md",
 }
+SCRIPT_PLACEHOLDERS = ("TODO", "FIXME", "PLACEHOLDER", "REPLACE_ME", "YOUR_")
+
+
+def validate_script_file(skill_name: str, script_path: Path) -> list[str]:
+    errors: list[str] = []
+
+    if script_path.suffix != ".py":
+        errors.append(f"{skill_name}: script must be a Python file: {script_path.name}")
+        return errors
+
+    text = script_path.read_text(encoding="utf-8")
+    try:
+        compile(text, str(script_path), "exec")
+    except SyntaxError as exc:
+        errors.append(f"{skill_name}: script {script_path.name} has invalid Python syntax: {exc}")
+
+    for placeholder in SCRIPT_PLACEHOLDERS:
+        if placeholder in text:
+            errors.append(f"{skill_name}: script {script_path.name} contains placeholder text: {placeholder}")
+
+    mode = script_path.stat().st_mode
+    executable = bool(mode & (stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH))
+    runnable_by_python = script_path.suffix == ".py"
+    if not executable and not runnable_by_python:
+        errors.append(f"{skill_name}: script {script_path.name} is neither executable nor runnable by python3")
+
+    return errors
+
+
+def validate_scripts_dir(skill_dir: Path) -> list[str]:
+    errors: list[str] = []
+    skill_name = skill_dir.name
+    scripts_dir = skill_dir / "scripts"
+    if not scripts_dir.exists():
+        return errors
+
+    if not scripts_dir.is_dir():
+        return [f"{skill_name}: scripts exists but is not a directory"]
+
+    script_files = sorted(path for path in scripts_dir.iterdir() if path.is_file())
+    if not script_files:
+        errors.append(f"{skill_name}: scripts directory is empty")
+
+    nested_files = [path for path in scripts_dir.glob("*/*") if path.is_file() and "__pycache__" not in path.parts]
+    if nested_files:
+        errors.append(f"{skill_name}: scripts must be one level deep")
+
+    for script_path in script_files:
+        errors.extend(validate_script_file(skill_name, script_path))
+
+    return errors
 
 
 def parse_frontmatter(path: Path) -> tuple[dict[str, str] | None, str | None]:
@@ -105,6 +157,8 @@ def validate_skill(skill_dir: Path) -> list[str]:
         nested = [path for path in references_dir.glob("*/*") if path.is_file()]
         if nested:
             errors.append(f"{skill_name}: references must be one level deep")
+
+    errors.extend(validate_scripts_dir(skill_dir))
 
     return errors
 

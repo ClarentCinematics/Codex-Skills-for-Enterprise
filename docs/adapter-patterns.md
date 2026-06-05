@@ -18,9 +18,12 @@ Useful adapter inputs:
 - PR descriptions and changed-file lists;
 - commit ranges and ticket summaries.
 
+Level 3 example:
+
+- `ci-failure-triage/scripts/extract_ci_signal.py` extracts the first high-confidence failure signal, likely failure class, context, detected commands/tests, and caveats from exported CI logs.
+
 Possible future scripts:
 
-- extract the first meaningful CI failure from a long log;
 - summarize changed files by extension and directory;
 - normalize commit messages into release-note buckets.
 
@@ -33,10 +36,12 @@ Useful adapter inputs:
 - account research excerpts;
 - discovery notes and proposal constraints.
 
+Level 3 example:
+
+- `crm-hygiene-auditor/scripts/audit_crm_csv.py` audits exported CRM CSVs for missing required values, stale activity, weak forecast evidence, and duplicate-looking records.
+
 Possible future scripts:
 
-- detect missing required CRM fields in a CSV;
-- flag stale next steps by date;
 - normalize account research sources into evidence labels.
 
 ## Knowledge Ops
@@ -49,11 +54,13 @@ Useful adapter inputs:
 - policy text;
 - source excerpts with dates and authors.
 
+Level 3 example:
+
+- `knowledge-base-capture/scripts/check_kb_metadata.py` checks markdown KB drafts for metadata completeness, stale review dates, unresolved assumptions, owner gaps, and publishing readiness.
+
 Possible future scripts:
 
 - split source bundles into cited excerpts;
-- check KB article metadata completeness;
-- detect stale review dates.
 
 ## Adapter Readiness Checklist
 

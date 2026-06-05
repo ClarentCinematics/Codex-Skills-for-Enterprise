@@ -13,6 +13,10 @@ description: Diagnose failed CI runs, build logs, test output, deployment checks
 4. Map the failure to likely ownership by component, file path, service, team, or changed area when available.
 5. Produce a practical fix path with reproduction steps, investigation commands, and escalation needs.
 
+## Script-Assisted Workflow
+
+When given a long raw CI log, run `scripts/extract_ci_signal.py --input <log>` first to extract the primary failure candidate, likely failure class, detected commands/tests, context, and caveats. Use `--json` when another tool or report needs structured output. Treat the script output as evidence for triage, not as a final root-cause decision.
+
 ## Output Standard
 
 Use this structure by default:

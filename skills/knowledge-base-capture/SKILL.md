@@ -13,6 +13,10 @@ description: Convert meetings, support threads, incident learnings, project note
 4. Structure the article for reuse, searchability, ownership, and future maintenance.
 5. Produce a clean KB draft with metadata and review questions.
 
+## Script-Assisted Workflow
+
+When reviewing a markdown KB draft, run `scripts/check_kb_metadata.py --input <draft.md>` to check required sections, metadata completeness, review freshness, owner gaps, and unresolved assumptions. Adjust `--required-sections` and `--today` for the target knowledge-base standard. Use the output to decide publishing readiness; do not use the script to rewrite the article.
+
 ## Output Standard
 
 Use this structure by default:
