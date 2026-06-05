@@ -1,0 +1,4 @@
+interface:
+  display_name: "Policy Impact Analysis"
+  short_description: "Map policy changes to business impact"
+  default_prompt: "Use $policy-impact-analysis to analyze this policy change and identify business impacts, gaps, and actions."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Account Research Brief"
+  short_description: "Synthesize account context and signals"
+  default_prompt: "Use $account-research-brief to synthesize this account context into a sales-ready brief."

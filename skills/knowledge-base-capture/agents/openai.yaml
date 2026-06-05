@@ -1,0 +1,4 @@
+interface:
+  display_name: "Knowledge Base Capture"
+  short_description: "Turn source material into KB articles"
+  default_prompt: "Use $knowledge-base-capture to convert this source material into a clean knowledge-base article."

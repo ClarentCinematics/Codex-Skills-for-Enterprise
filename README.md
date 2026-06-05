@@ -16,7 +16,9 @@ Enterprises do not need more scattered prompt snippets. They need reliable opera
 
 Codex Skills make that possible by giving Codex targeted procedural knowledge for specific work.
 
-## Starter Skill Catalog
+## Skill Catalog
+
+### Executive Ops
 
 | Skill | Enterprise outcome | Use when |
 | --- | --- | --- |
@@ -25,6 +27,30 @@ Codex Skills make that possible by giving Codex targeted procedural knowledge fo
 | `decision-memo` | Frame options, tradeoffs, risks, and a recommendation | A team needs a documented decision path, not just a recommendation |
 | `project-status-brief` | Standardize project health, blockers, milestones, and escalations | Project updates are inconsistent, scattered, or too verbose |
 | `automation-opportunity-map` | Identify and prioritize workflows for automation | A process needs evaluation for Codex, scripts, tools, or integration automation |
+
+### Engineering Ops
+
+| Skill | Enterprise outcome | Use when |
+| --- | --- | --- |
+| `ci-failure-triage` | Diagnose failed builds, tests, checks, and release-blocking automation | CI logs or pipeline summaries need root cause, owner, reproduction, and fix path |
+| `pr-review-brief` | Prepare focused, risk-aware pull request reviews | PRs or merge requests need review focus, blockers, missing tests, and suggested comments |
+| `release-notes-generator` | Produce audience-specific release communication | Commits, PRs, tickets, or changelog fragments need polished release notes |
+
+### Revenue Ops
+
+| Skill | Enterprise outcome | Use when |
+| --- | --- | --- |
+| `crm-hygiene-auditor` | Improve pipeline hygiene, ownership clarity, and forecast confidence | CRM records or opportunity exports need data-quality inspection |
+| `account-research-brief` | Turn account context into sales-ready research and outreach angles | Account notes, research, and signals need synthesis for discovery or strategy |
+| `proposal-drafting-assistant` | Draft tailored, reviewable enterprise proposals | Customer needs and solution context need a proposal or SOW-style draft |
+
+### Knowledge Ops
+
+| Skill | Enterprise outcome | Use when |
+| --- | --- | --- |
+| `research-synthesis-brief` | Create source-grounded research and decision briefs | Multiple sources need claims, evidence, caveats, contradictions, and actions |
+| `policy-impact-analysis` | Translate policy changes into business impact and action plans | Policies, regulations, or internal guidance need gap analysis and rollout guidance |
+| `knowledge-base-capture` | Preserve institutional knowledge as maintainable KB articles | Meetings, support threads, SOPs, or learnings need reusable documentation |
 
 ## Repository Structure
 
@@ -35,7 +61,9 @@ Codex Skills make that possible by giving Codex targeted procedural knowledge fo
 |-- docs/
 |   |-- adoption-guide.md
 |   |-- examples.md
-|   `-- skill-quality-standard.md
+|   |-- forward-test-playbook.md
+|   |-- skill-quality-standard.md
+|   `-- v2-skill-examples.md
 |-- skills/
 |   `-- <skill-name>/
 |       |-- SKILL.md
@@ -92,6 +120,8 @@ Every skill in this repository must meet a strict v1 standard:
 - validation through `scripts/validate_skills.py` and manual review.
 
 See [Skill Quality Standard](docs/skill-quality-standard.md) for the full checklist.
+
+For the v2 skill expansion, see [V2 Skill Examples](docs/v2-skill-examples.md) and [Forward-Test Playbook](docs/forward-test-playbook.md) for realistic prompts, quality criteria, and smoke-test guidance.
 
 ## Enterprise Adoption Path
 

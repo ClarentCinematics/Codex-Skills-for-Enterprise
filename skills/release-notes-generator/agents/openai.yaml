@@ -1,0 +1,4 @@
+interface:
+  display_name: "Release Notes Generator"
+  short_description: "Create audience-specific release notes"
+  default_prompt: "Use $release-notes-generator to turn these changes into polished release notes."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "CI Failure Triage"
+  short_description: "Diagnose failed builds and test runs"
+  default_prompt: "Use $ci-failure-triage to diagnose this failed CI run and produce a fix path."

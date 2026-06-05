@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Synthesis Brief"
+  short_description: "Synthesize evidence into decisions"
+  default_prompt: "Use $research-synthesis-brief to synthesize these sources into claims, evidence, caveats, and recommended actions."

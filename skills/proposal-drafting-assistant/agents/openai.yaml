@@ -1,0 +1,4 @@
+interface:
+  display_name: "Proposal Drafting Assistant"
+  short_description: "Draft tailored enterprise proposals"
+  default_prompt: "Use $proposal-drafting-assistant to draft a tailored proposal from this customer context."

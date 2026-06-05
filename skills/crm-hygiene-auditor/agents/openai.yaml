@@ -1,0 +1,4 @@
+interface:
+  display_name: "CRM Hygiene Auditor"
+  short_description: "Find pipeline and account data issues"
+  default_prompt: "Use $crm-hygiene-auditor to audit these CRM records for hygiene gaps and forecast risk."
