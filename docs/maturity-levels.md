@@ -12,7 +12,7 @@ Use maturity levels to decide how much rigor a skill needs before broader adopti
 
 ## Current Repository Position
 
-Most skills in this repository are Level 2: concise skills with structured reference rubrics. The installer and pack metadata make pack-level adoption easier, while tool-connected adapters remain optional and deliberately separate.
+Most skills in this repository are Level 2: concise skills with structured reference rubrics. `ci-failure-triage`, `crm-hygiene-auditor`, and `knowledge-base-capture` are Level 3 examples because they include deterministic helper scripts plus smoke-testable script interfaces. The installer and pack metadata make pack-level adoption easier, while tool-connected adapters remain optional and deliberately separate.
 
 ## Advancement Rules
 
