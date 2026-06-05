@@ -4,6 +4,17 @@ Premium, practical Codex Skills for teams that want to accelerate executive work
 
 This repository is designed for enterprise AI leaders, transformation teams, and internal builders who need more than generic prompts. Each skill packages a repeatable workflow into concise instructions, reusable references, and validation standards that help Codex produce consistent, high-value work.
 
+## At a Glance
+
+| Area | What you get | Best for |
+| --- | --- | --- |
+| Executive Ops | Decision-ready briefs, reports, and status narratives | Leaders, PMs, and transformation teams |
+| Engineering Ops | CI triage, PR review support, and release notes | Dev teams and platform operations |
+| Revenue Ops | CRM hygiene, account research, and proposal drafting | Sales, GTM, and customer success teams |
+| Knowledge Ops | Research synthesis, policy analysis, and KB capture | Strategy, operations, and knowledge teams |
+
+> Start with one skill, validate the output on a real artifact, and scale the pattern only after the quality bar is met.
+
 ## Why This Exists
 
 Enterprises do not need more scattered prompt snippets. They need reliable operating patterns that help teams:
@@ -53,6 +64,8 @@ Codex Skills make that possible by giving Codex targeted procedural knowledge fo
 | `knowledge-base-capture` | Preserve institutional knowledge as maintainable KB articles | Meetings, support threads, SOPs, or learnings need reusable documentation |
 
 ## Install Skills
+
+Use the commands below to inspect, preview, or install skills in a predictable way.
 
 List every available skill and pack:
 
