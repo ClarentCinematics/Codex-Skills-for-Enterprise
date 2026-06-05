@@ -1,5 +1,9 @@
 # Codex Skills for Enterprise
 
+<p align="center">
+  <img src="./ECSE.png" alt="Codex Skills for Enterprise" width="100%">
+</p>
+
 Premium, practical Codex Skills for teams that want to accelerate executive work, automate repeatable workflows, and raise the quality of day-to-day knowledge operations.
 
 This repository is designed for enterprise AI leaders, transformation teams, and internal builders who need more than generic prompts. Each skill packages a repeatable workflow into concise instructions, reusable references, and validation standards that help Codex produce consistent, high-value work.
