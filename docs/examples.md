@@ -121,3 +121,18 @@ Validation focus:
 - excludes owner-rejected ideas (phone AI, generic email bots, route planning) from the roadmap;
 - proposes a narrow first experiment (e.g., collections reminders) with success measures tied to cash flow or time saved;
 - surfaces open questions as blockers for later packages, not as invented answers.
+
+## CAO Operating Pulse
+
+Prompt:
+
+```text
+Use $cao-operating-pulse to turn these initiative updates, adoption metrics, vendor pitches, and governance notes into a CAO operating pulse for next week's leadership sync.
+```
+
+Validation focus:
+
+- signal is separated from hype and vendor theatre;
+- portfolio tags are evidence-based;
+- governance and shadow-AI risks name owners and review needs;
+- playful framing does not replace actionable decisions.

@@ -40,7 +40,7 @@ Existing skills are not overwritten unless `--force` is passed.
 
 | Pack | Skills | Best for |
 | --- | --- | --- |
-| `executive-ops` | `meeting-intelligence`, `weekly-executive-report`, `decision-memo`, `project-status-brief`, `automation-opportunity-map` | Leadership operating rhythm and executive productivity |
+| `executive-ops` | `meeting-intelligence`, `weekly-executive-report`, `decision-memo`, `project-status-brief`, `automation-opportunity-map`, `cao-operating-pulse` | Leadership operating rhythm, executive productivity, and Chief AI Officer briefings |
 | `engineering-ops` | `ci-failure-triage`, `pr-review-brief`, `release-notes-generator` | Software delivery, review quality, CI triage, release communication |
 | `revenue-ops` | `crm-hygiene-auditor`, `account-research-brief`, `proposal-drafting-assistant` | Pipeline quality, account strategy, proposal workflows |
 | `knowledge-ops` | `research-synthesis-brief`, `policy-impact-analysis`, `knowledge-base-capture` | Research, policy analysis, and institutional knowledge capture |

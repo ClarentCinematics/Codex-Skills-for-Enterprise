@@ -4,7 +4,8 @@
     "weekly-executive-report",
     "decision-memo",
     "project-status-brief",
-    "automation-opportunity-map"
+    "automation-opportunity-map",
+    "cao-operating-pulse"
   ],
   "engineering-ops": [
     "ci-failure-triage",
@@ -27,6 +28,7 @@
     "decision-memo",
     "project-status-brief",
     "automation-opportunity-map",
+    "cao-operating-pulse",
     "ci-failure-triage",
     "pr-review-brief",
     "release-notes-generator",
