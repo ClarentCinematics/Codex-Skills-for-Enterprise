@@ -1,0 +1,4 @@
+interface:
+  display_name: "CAO Operating Pulse"
+  short_description: "Board-ready AI leadership pulse with playful signal framing"
+  default_prompt: "Use $cao-operating-pulse to synthesize these AI strategy notes into a CAO operating pulse with portfolio calls, governance risks, and executive decisions."

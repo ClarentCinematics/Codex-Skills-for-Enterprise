@@ -1,6 +1,6 @@
 # Codex Skills for Enterprise
 
-[![Skills](https://img.shields.io/badge/skills-14-0f766e)](#skill-catalog)
+[![Skills](https://img.shields.io/badge/skills-15-0f766e)](#skill-catalog)
 [![Validation](https://github.com/ClarentCinematics/Codex-Skills-for-Enterprise/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/ClarentCinematics/Codex-Skills-for-Enterprise/actions/workflows/validate-skills.yml)
 [![Maturity](https://img.shields.io/badge/maturity-Level%202--3-2563eb)](docs/maturity-levels.md)
 [![Codex Ready](https://img.shields.io/badge/Codex-ready-111827)](#quickstart)
@@ -69,6 +69,7 @@ Codex Skills make that possible by giving Codex targeted procedural knowledge fo
 | [`decision-memo`](skills/decision-memo/SKILL.md) | Frame options, tradeoffs, risks, and a recommendation | A team needs a documented decision path, not just a recommendation |
 | [`project-status-brief`](skills/project-status-brief/SKILL.md) | Standardize project health, blockers, milestones, and escalations | Project updates are inconsistent, scattered, or too verbose |
 | [`automation-opportunity-map`](skills/automation-opportunity-map/SKILL.md) | Identify and prioritize workflows for automation | A process needs evaluation for Codex, scripts, tools, or integration automation |
+| [`cao-operating-pulse`](skills/cao-operating-pulse/SKILL.md) | Turn AI operating noise into a board-ready CAO pulse with portfolio, governance, and adoption signal | A Chief AI Officer needs a leadership brief, initiative portfolio review, shadow-AI scan, or executive AI rhythm artifact |
 
 ### Engineering Ops
 

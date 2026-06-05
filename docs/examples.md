@@ -76,3 +76,18 @@ Validation focus:
 - privacy and human-review needs are flagged;
 - quick wins are narrow and measurable;
 - roadmap has a practical first experiment.
+
+## CAO Operating Pulse
+
+Prompt:
+
+```text
+Use $cao-operating-pulse to turn these initiative updates, adoption metrics, vendor pitches, and governance notes into a CAO operating pulse for next week's leadership sync.
+```
+
+Validation focus:
+
+- signal is separated from hype and vendor theatre;
+- portfolio tags are evidence-based;
+- governance and shadow-AI risks name owners and review needs;
+- playful framing does not replace actionable decisions.
