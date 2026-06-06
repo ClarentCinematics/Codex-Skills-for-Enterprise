@@ -15,6 +15,12 @@ This repository is designed for enterprise AI leaders, transformation teams, and
 
 Codex Skills for Enterprise is Codex-first, but the workflows are plain markdown skills and can be adapted for other agentic coding assistants that support skill-like instructions, local files, or reusable workflow prompts.
 
+## Enterprise Introduction
+
+Codex Skills for Enterprise gives companies a practical operating layer for AI-assisted work. Instead of asking every employee to rediscover the right prompt, the organization can install shared skills for common workflows: leadership meetings, executive reporting, AI portfolio reviews, CI triage, CRM hygiene, account research, proposals, policy analysis, and knowledge capture.
+
+The repository is intentionally conservative. Skills are not allowed to invent missing owners, dates, metrics, customer commitments, legal conclusions, or financial values. They are designed to structure evidence, surface uncertainty, and produce artifacts a human can review, improve, and use.
+
 ## At a Glance
 
 | Area | What you get | Best for |
@@ -28,14 +34,34 @@ Codex Skills for Enterprise is Codex-first, but the workflows are plain markdown
 
 ## Table Of Contents
 
+- [Enterprise Introduction](#enterprise-introduction)
+- [Documentation Map](#documentation-map)
 - [Featured Skills](#featured-skills)
 - [Skill Catalog](#skill-catalog)
 - [Install Skills](#install-skills)
 - [Skill Packs](#skill-packs)
+- [Proposed Company Workflows](#proposed-company-workflows)
 - [Quality Bar](#quality-bar)
+- [Active Maintenance](#active-maintenance)
 - [Curation Policy](docs/curation-policy.md)
 - [Enterprise Adoption Path](#enterprise-adoption-path)
 - [Contributing](#contributing)
+
+## Documentation Map
+
+| Document | Use it for |
+| --- | --- |
+| [Enterprise Brief](docs/enterprise-brief.md) | Company-level explanation, audience, positioning, and adoption starting point. |
+| [User Manual](docs/user-manual.md) | Step-by-step instructions for selecting, installing, invoking, and reviewing skills. |
+| [Proposed Workflows](docs/proposed-workflows.md) | Practical operating flows for executives, CAOs, engineering, revenue ops, knowledge, and automation intake. |
+| [Enterprise Adoption Guide](docs/adoption-guide.md) | Pilot-to-rollout model for introducing skills as operating standards. |
+| [Skill Packs](docs/skill-packs.md) | Pack-level installation and adoption guidance. |
+| [Skill Quality Standard](docs/skill-quality-standard.md) | Required structure, instruction quality, and readiness bar. |
+| [Curation Policy](docs/curation-policy.md) | What belongs here, what is rejected, and what evidence is required. |
+| [Maintenance Model](docs/maintenance-model.md) | Branch hygiene, validation, release process, and skill lifecycle. |
+| [Changelog](CHANGELOG.md) | User-visible repository changes and maintenance history. |
+| [Support](SUPPORT.md) | How to ask for help or propose skill and documentation improvements. |
+| [Security Policy](SECURITY.md) | How to handle sensitive artifacts and report safety concerns. |
 
 ## Featured Skills
 
@@ -137,10 +163,32 @@ Existing installed skills are never overwritten unless `--force` is passed.
 
 See [Skill Packs](docs/skill-packs.md) for pack details and adoption guidance.
 
+## Proposed Company Workflows
+
+The skills can be adopted as individual tools, but they are strongest when tied to a real operating rhythm.
+
+| Workflow | Skills involved | Outcome |
+| --- | --- | --- |
+| Executive operating rhythm | `meeting-intelligence`, `decision-memo`, `project-status-brief`, `weekly-executive-report` | Cleaner decisions, follow-ups, escalations, and leadership reporting. |
+| Chief AI Officer pulse | `cao-operating-pulse`, `automation-opportunity-map`, `policy-impact-analysis` | Board-ready view of AI portfolio, adoption, governance, and decisions needed. |
+| Engineering release readiness | `ci-failure-triage`, `pr-review-brief`, `release-notes-generator` | Faster triage, sharper review focus, and clearer release communication. |
+| Revenue operations hygiene | `crm-hygiene-auditor`, `account-research-brief`, `proposal-drafting-assistant` | Better CRM quality, account preparation, and proposal drafts. |
+| Knowledge capture and reuse | `knowledge-base-capture`, `research-synthesis-brief`, `policy-impact-analysis` | Maintainable KB articles with provenance, owners, and review questions. |
+| Automation intake | `automation-opportunity-map`, `decision-memo`, `project-status-brief` | Prioritized automation candidates with assumptions, risks, and first experiments. |
+
+See [Proposed Workflows](docs/proposed-workflows.md) for detailed playbooks.
+
 ## Repository Structure
 
 ```text
 .
+|-- .github/
+|   |-- ISSUE_TEMPLATE/
+|   |-- PULL_REQUEST_TEMPLATE.md
+|   `-- workflows/
+|-- CHANGELOG.md
+|-- SECURITY.md
+|-- SUPPORT.md
 |-- README.md
 |-- CONTRIBUTING.md
 |-- skill-packs.json
@@ -148,12 +196,16 @@ See [Skill Packs](docs/skill-packs.md) for pack details and adoption guidance.
 |   |-- adoption-guide.md
 |   |-- adapter-patterns.md
 |   |-- curation-policy.md
+|   |-- enterprise-brief.md
 |   |-- examples.md
 |   |-- forward-test-playbook.md
+|   |-- maintenance-model.md
 |   |-- maturity-levels.md
+|   |-- proposed-workflows.md
 |   |-- script-assisted-workflows.md
 |   |-- skill-packs.md
 |   |-- skill-quality-standard.md
+|   |-- user-manual.md
 |   `-- v2-skill-examples.md
 |-- skills/
 |   `-- <skill-name>/
@@ -168,7 +220,6 @@ See [Skill Packs](docs/skill-packs.md) for pack details and adoption guidance.
 |-- scripts/
 |   |-- install_skill.py
 |   `-- validate_skills.py
-`-- .github/workflows/validate-skills.yml
 ```
 
 ## Quickstart
@@ -218,6 +269,17 @@ See [Curation Policy](docs/curation-policy.md) for what belongs in this reposito
 For the v2 skill expansion, see [V2 Skill Examples](docs/v2-skill-examples.md) and [Forward-Test Playbook](docs/forward-test-playbook.md) for realistic prompts, quality criteria, and smoke-test guidance.
 
 See [Maturity Levels](docs/maturity-levels.md) for a practical model that moves skills from prompted workflows to audited, tool-connected enterprise workflows. See [Adapter Patterns](docs/adapter-patterns.md) for optional integration guidance that keeps the core skills vendor-neutral.
+
+## Active Maintenance
+
+Current maintained state as of 2026-06-06:
+
+- 15 skills are available across 4 operating areas.
+- `main` is expected to remain validated and installable.
+- GitHub Actions runs skill validation on pull requests and pushes to `main`.
+- Level 3 helper scripts are included for CI triage, CRM hygiene auditing, and KB metadata checks.
+- Public contribution intake uses issue and pull request templates.
+- Maintenance expectations are documented in [Maintenance Model](docs/maintenance-model.md).
 
 ## Inspiration
 

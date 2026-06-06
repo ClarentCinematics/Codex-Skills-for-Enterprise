@@ -4,6 +4,8 @@ Contributions should make enterprise workflows more repeatable, valuable, and tr
 
 Read [docs/curation-policy.md](docs/curation-policy.md) before proposing a new skill. The repository accepts curated enterprise workflows, not generic prompt collections.
 
+For repository operating expectations, see [docs/maintenance-model.md](docs/maintenance-model.md).
+
 ## Before Creating A Skill
 
 Use [templates/enterprise-workflow-map.md](templates/enterprise-workflow-map.md) to define the workflow, audience, inputs, outputs, quality risks, and acceptance criteria.
@@ -56,6 +58,7 @@ python3 scripts/validate_skills.py
 ```
 
 7. Test at least one realistic enterprise prompt before submitting.
+8. Update [CHANGELOG.md](CHANGELOG.md) for user-visible repository changes.
 
 ## Pull Request Standard
 
@@ -66,3 +69,5 @@ In the pull request summary, include:
 - validation command and result;
 - realistic prompt used for manual testing;
 - known limitations or human-review requirements.
+
+The repository includes a pull request template and issue templates for skill requests and documentation improvements. Use them instead of opening unstructured requests.
