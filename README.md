@@ -51,14 +51,11 @@ The repository is intentionally conservative. Skills are not allowed to invent m
 
 | Document | Use it for |
 | --- | --- |
-| [Enterprise Brief](docs/enterprise-brief.md) | Company-level explanation, audience, positioning, and adoption starting point. |
-| [User Manual](docs/user-manual.md) | Step-by-step instructions for selecting, installing, invoking, and reviewing skills. |
-| [Proposed Workflows](docs/proposed-workflows.md) | Practical operating flows for executives, CAOs, engineering, revenue ops, knowledge, and automation intake. |
+| [Enterprise Handbook](docs/enterprise-handbook.md) | Company brief, user manual, proposed workflows, and maintenance model in one file. |
 | [Enterprise Adoption Guide](docs/adoption-guide.md) | Pilot-to-rollout model for introducing skills as operating standards. |
 | [Skill Packs](docs/skill-packs.md) | Pack-level installation and adoption guidance. |
 | [Skill Quality Standard](docs/skill-quality-standard.md) | Required structure, instruction quality, and readiness bar. |
 | [Curation Policy](docs/curation-policy.md) | What belongs here, what is rejected, and what evidence is required. |
-| [Maintenance Model](docs/maintenance-model.md) | Branch hygiene, validation, release process, and skill lifecycle. |
 | [Changelog](CHANGELOG.md) | User-visible repository changes and maintenance history. |
 | [Support](SUPPORT.md) | How to ask for help or propose skill and documentation improvements. |
 | [Security Policy](SECURITY.md) | How to handle sensitive artifacts and report safety concerns. |
@@ -176,7 +173,7 @@ The skills can be adopted as individual tools, but they are strongest when tied 
 | Knowledge capture and reuse | `knowledge-base-capture`, `research-synthesis-brief`, `policy-impact-analysis` | Maintainable KB articles with provenance, owners, and review questions. |
 | Automation intake | `automation-opportunity-map`, `decision-memo`, `project-status-brief` | Prioritized automation candidates with assumptions, risks, and first experiments. |
 
-See [Proposed Workflows](docs/proposed-workflows.md) for detailed playbooks.
+See [Enterprise Handbook](docs/enterprise-handbook.md#proposed-workflows) for detailed playbooks.
 
 ## Repository Structure
 
@@ -196,16 +193,13 @@ See [Proposed Workflows](docs/proposed-workflows.md) for detailed playbooks.
 |   |-- adoption-guide.md
 |   |-- adapter-patterns.md
 |   |-- curation-policy.md
-|   |-- enterprise-brief.md
+|   |-- enterprise-handbook.md
 |   |-- examples.md
 |   |-- forward-test-playbook.md
-|   |-- maintenance-model.md
 |   |-- maturity-levels.md
-|   |-- proposed-workflows.md
 |   |-- script-assisted-workflows.md
 |   |-- skill-packs.md
 |   |-- skill-quality-standard.md
-|   |-- user-manual.md
 |   `-- v2-skill-examples.md
 |-- skills/
 |   `-- <skill-name>/
@@ -279,7 +273,7 @@ Current maintained state as of 2026-06-06:
 - GitHub Actions runs skill validation on pull requests and pushes to `main`.
 - Level 3 helper scripts are included for CI triage, CRM hygiene auditing, and KB metadata checks.
 - Public contribution intake uses issue and pull request templates.
-- Maintenance expectations are documented in [Maintenance Model](docs/maintenance-model.md).
+- Maintenance expectations are documented in the [Enterprise Handbook](docs/enterprise-handbook.md#maintenance-model).
 
 ## Inspiration
 

@@ -4,7 +4,7 @@ Contributions should make enterprise workflows more repeatable, valuable, and tr
 
 Read [docs/curation-policy.md](docs/curation-policy.md) before proposing a new skill. The repository accepts curated enterprise workflows, not generic prompt collections.
 
-For repository operating expectations, see [docs/maintenance-model.md](docs/maintenance-model.md).
+For repository operating expectations, see the [maintenance model](docs/enterprise-handbook.md#maintenance-model).
 
 ## Before Creating A Skill
 

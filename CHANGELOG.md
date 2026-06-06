@@ -5,7 +5,8 @@ All notable repository-level changes are summarized here. Skill behavior changes
 ## 2026-06-06
 
 - Added the `cao-operating-pulse` skill for Chief AI Officer operating rhythm, portfolio, governance, and adoption briefs.
-- Added professional repository documentation: enterprise brief, user manual, proposed workflow playbooks, and maintenance model.
+- Added professional repository documentation in a consolidated enterprise handbook.
+- Consolidated broad manual-style documentation into `docs/enterprise-handbook.md` to keep the repository easier to scan.
 - Added GitHub issue and pull request templates for cleaner contribution intake.
 - Added support and security policy files for clearer public maintenance expectations.
 - Removed internal planning artifacts from the public repository root.

@@ -2,7 +2,7 @@
 
 Codex Skills work best when they are introduced as operating standards, not as prompt experiments.
 
-For day-to-day usage, see [User Manual](user-manual.md). For packaged operating flows, see [Proposed Workflows](proposed-workflows.md).
+For day-to-day usage and packaged operating flows, see the [Enterprise Handbook](enterprise-handbook.md).
 
 ## 1. Select A High-Value Workflow
 

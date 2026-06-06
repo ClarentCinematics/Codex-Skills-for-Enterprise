@@ -22,8 +22,7 @@ Open a skill request when:
 
 Please check:
 
-- [User Manual](docs/user-manual.md)
-- [Proposed Workflows](docs/proposed-workflows.md)
+- [Enterprise Handbook](docs/enterprise-handbook.md)
 - [Skill Quality Standard](docs/skill-quality-standard.md)
 - [Curation Policy](docs/curation-policy.md)
 
@@ -32,4 +31,3 @@ Include the skill name, command, source artifact type, expected output, and actu
 ## Scope
 
 This repository provides skill instructions, references, scripts, validation, and adoption guidance. It does not provide managed deployment, customer-specific compliance approval, or legal review.
-
