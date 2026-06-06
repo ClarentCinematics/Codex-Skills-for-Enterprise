@@ -4,6 +4,7 @@ All notable repository-level changes are summarized here. Skill behavior changes
 
 ## 2026-06-06
 
+- Added `skill-registry.json`, registry-backed validation checks, sample outputs, and deterministic smoke fixtures for featured skills.
 - Added the `cao-operating-pulse` skill for Chief AI Officer operating rhythm, portfolio, governance, and adoption briefs.
 - Added professional repository documentation in a consolidated enterprise handbook.
 - Consolidated broad manual-style documentation into `docs/enterprise-handbook.md` to keep the repository easier to scan.

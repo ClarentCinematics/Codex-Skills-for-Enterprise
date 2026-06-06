@@ -52,6 +52,7 @@ The repository is intentionally conservative. Skills are not allowed to invent m
 | Document | Use it for |
 | --- | --- |
 | [Enterprise Handbook](docs/enterprise-handbook.md) | Company brief, user manual, proposed workflows, and maintenance model in one file. |
+| [Sample Outputs](docs/sample-outputs.md) | Fictional examples showing output shape, caveats, and must-not-invent behavior. |
 | [Enterprise Adoption Guide](docs/adoption-guide.md) | Pilot-to-rollout model for introducing skills as operating standards. |
 | [Skill Packs](docs/skill-packs.md) | Pack-level installation and adoption guidance. |
 | [Skill Quality Standard](docs/skill-quality-standard.md) | Required structure, instruction quality, and readiness bar. |
@@ -188,6 +189,7 @@ See [Enterprise Handbook](docs/enterprise-handbook.md#proposed-workflows) for de
 |-- SUPPORT.md
 |-- README.md
 |-- CONTRIBUTING.md
+|-- skill-registry.json
 |-- skill-packs.json
 |-- docs/
 |   |-- adoption-guide.md
@@ -197,6 +199,7 @@ See [Enterprise Handbook](docs/enterprise-handbook.md#proposed-workflows) for de
 |   |-- examples.md
 |   |-- forward-test-playbook.md
 |   |-- maturity-levels.md
+|   |-- sample-outputs.md
 |   |-- script-assisted-workflows.md
 |   |-- skill-packs.md
 |   |-- skill-quality-standard.md
@@ -214,6 +217,9 @@ See [Enterprise Handbook](docs/enterprise-handbook.md#proposed-workflows) for de
 |-- scripts/
 |   |-- install_skill.py
 |   `-- validate_skills.py
+`-- tests/
+    |-- fixtures/
+    `-- run_smoke_tests.py
 ```
 
 ## Quickstart
@@ -254,7 +260,9 @@ Every skill in this repository must meet a strict v1 standard:
 - one-level `references/` files for deeper frameworks or examples;
 - no auxiliary README, changelog, or installation files inside skill folders;
 - realistic enterprise use cases documented at the repo level;
-- validation through `scripts/validate_skills.py` and manual review.
+- registry-backed validation through `scripts/validate_skills.py`;
+- smoke fixture validation through `tests/run_smoke_tests.py`;
+- manual review for sensitive or executive-facing output.
 
 See [Skill Quality Standard](docs/skill-quality-standard.md) for the full checklist.
 
@@ -272,6 +280,8 @@ Current maintained state as of 2026-06-06:
 - `main` is expected to remain validated and installable.
 - GitHub Actions runs skill validation on pull requests and pushes to `main`.
 - Level 3 helper scripts are included for CI triage, CRM hygiene auditing, and KB metadata checks.
+- `skill-registry.json` tracks catalog metadata and featured skills.
+- Smoke fixtures cover the five featured skills.
 - Public contribution intake uses issue and pull request templates.
 - Maintenance expectations are documented in the [Enterprise Handbook](docs/enterprise-handbook.md#maintenance-model).
 

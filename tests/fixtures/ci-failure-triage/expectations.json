@@ -1,0 +1,6 @@
+{
+  "skill": "ci-failure-triage",
+  "required_sections": ["Failure Summary", "Primary Signal", "Likely Root Cause", "Reproduction Path", "Caveats"],
+  "forbidden_claims": ["changed files", "service owner", "branch name", "incident severity"],
+  "required_caveats": ["changed files not provided", "ownership not provided", "exit-code line is downstream noise"]
+}

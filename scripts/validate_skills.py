@@ -18,6 +18,8 @@ except ImportError:  # pragma: no cover - depends on local environment
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS_DIR = ROOT / "skills"
 PACKS_FILE = ROOT / "skill-packs.json"
+REGISTRY_FILE = ROOT / "skill-registry.json"
+README_FILE = ROOT / "README.md"
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 DISALLOWED_SKILL_DOCS = {
     "README.md",
@@ -26,6 +28,18 @@ DISALLOWED_SKILL_DOCS = {
     "CHANGELOG.md",
 }
 SCRIPT_PLACEHOLDERS = ("TODO", "FIXME", "PLACEHOLDER", "REPLACE_ME", "YOUR_")
+REGISTRY_KEYS = {
+    "name",
+    "pack",
+    "maturity",
+    "audience",
+    "primary_artifacts",
+    "has_references",
+    "has_scripts",
+    "risk_level",
+    "featured",
+}
+VALID_RISK_LEVELS = {"low", "medium", "high"}
 
 
 def validate_script_file(skill_name: str, script_path: Path) -> list[str]:
@@ -215,6 +229,135 @@ def validate_packs(skill_dirs: list[Path]) -> list[str]:
     return errors
 
 
+def load_json_file(path: Path, label: str) -> tuple[object | None, list[str]]:
+    try:
+        return json.loads(path.read_text(encoding="utf-8")), []
+    except FileNotFoundError:
+        return None, [f"missing {label}"]
+    except json.JSONDecodeError as exc:
+        return None, [f"invalid {label}: {exc}"]
+
+
+def load_pack_data() -> tuple[dict[str, list[str]] | None, list[str]]:
+    data, errors = load_json_file(PACKS_FILE, "skill-packs.json")
+    if errors:
+        return None, errors
+    if not isinstance(data, dict):
+        return None, ["skill-packs.json must contain an object"]
+    packs: dict[str, list[str]] = {}
+    for pack_name, skills in data.items():
+        if isinstance(pack_name, str) and isinstance(skills, list):
+            packs[pack_name] = [str(skill) for skill in skills]
+    return packs, []
+
+
+def validate_registry(skill_dirs: list[Path]) -> list[str]:
+    errors: list[str] = []
+    skill_names = {path.name for path in skill_dirs}
+    registry_data, load_errors = load_json_file(REGISTRY_FILE, "skill-registry.json")
+    if load_errors:
+        return load_errors
+
+    if not isinstance(registry_data, dict) or not isinstance(registry_data.get("skills"), list):
+        return ["skill-registry.json must contain an object with a skills list"]
+
+    packs, pack_errors = load_pack_data()
+    errors.extend(pack_errors)
+    pack_lookup: dict[str, str] = {}
+    if packs is not None:
+        for pack_name, pack_skills in packs.items():
+            if pack_name == "all":
+                continue
+            for skill_name in pack_skills:
+                if skill_name in pack_lookup:
+                    errors.append(f"registry: skill '{skill_name}' appears in multiple non-all packs")
+                pack_lookup[skill_name] = pack_name
+
+    registry_names: set[str] = set()
+    for index, item in enumerate(registry_data["skills"], start=1):
+        if not isinstance(item, dict):
+            errors.append(f"registry: skill entry {index} must be an object")
+            continue
+
+        keys = set(item)
+        if keys != REGISTRY_KEYS:
+            missing = REGISTRY_KEYS - keys
+            extra = keys - REGISTRY_KEYS
+            if missing:
+                errors.append(f"registry: entry {index} missing key(s): {', '.join(sorted(missing))}")
+            if extra:
+                errors.append(f"registry: entry {index} has unexpected key(s): {', '.join(sorted(extra))}")
+            continue
+
+        name = item["name"]
+        if not isinstance(name, str) or not NAME_RE.fullmatch(name):
+            errors.append(f"registry: entry {index} has invalid skill name")
+            continue
+        if name in registry_names:
+            errors.append(f"registry: duplicate skill '{name}'")
+        registry_names.add(name)
+        if name not in skill_names:
+            errors.append(f"registry: skill '{name}' is not present under skills/")
+
+        pack = item["pack"]
+        if not isinstance(pack, str) or not NAME_RE.fullmatch(pack) or pack == "all":
+            errors.append(f"registry: skill '{name}' has invalid pack")
+        elif packs is not None and pack_lookup.get(name) != pack:
+            errors.append(f"registry: skill '{name}' pack '{pack}' does not match skill-packs.json")
+
+        maturity = item["maturity"]
+        if not isinstance(maturity, int) or maturity < 1 or maturity > 5:
+            errors.append(f"registry: skill '{name}' maturity must be an integer from 1 to 5")
+
+        if not isinstance(item["audience"], str) or not item["audience"].strip():
+            errors.append(f"registry: skill '{name}' audience must be a non-empty string")
+
+        artifacts = item["primary_artifacts"]
+        if not isinstance(artifacts, list) or not artifacts or not all(isinstance(value, str) and value.strip() for value in artifacts):
+            errors.append(f"registry: skill '{name}' primary_artifacts must be a non-empty string list")
+
+        if item["risk_level"] not in VALID_RISK_LEVELS:
+            errors.append(f"registry: skill '{name}' risk_level must be one of {', '.join(sorted(VALID_RISK_LEVELS))}")
+
+        for bool_key in ("has_references", "has_scripts", "featured"):
+            if not isinstance(item[bool_key], bool):
+                errors.append(f"registry: skill '{name}' {bool_key} must be boolean")
+
+        skill_dir = SKILLS_DIR / name
+        if skill_dir.exists():
+            has_references = (skill_dir / "references").is_dir()
+            has_scripts = (skill_dir / "scripts").is_dir()
+            if item["has_references"] != has_references:
+                errors.append(f"registry: skill '{name}' has_references does not match filesystem")
+            if item["has_scripts"] != has_scripts:
+                errors.append(f"registry: skill '{name}' has_scripts does not match filesystem")
+            if maturity == 3 and not has_scripts:
+                errors.append(f"registry: skill '{name}' maturity 3 requires a scripts directory")
+
+    missing_registry = skill_names - registry_names
+    extra_registry = registry_names - skill_names
+    if missing_registry:
+        errors.append(f"registry missing skill(s): {', '.join(sorted(missing_registry))}")
+    if extra_registry:
+        errors.append(f"registry has unknown skill(s): {', '.join(sorted(extra_registry))}")
+
+    return errors
+
+
+def validate_readme_badge(skill_dirs: list[Path]) -> list[str]:
+    if not README_FILE.exists():
+        return ["missing README.md"]
+    text = README_FILE.read_text(encoding="utf-8")
+    match = re.search(r"img\.shields\.io/badge/skills-(\d+)-", text)
+    if not match:
+        return ["README.md missing skills count badge"]
+    badge_count = int(match.group(1))
+    actual_count = len(skill_dirs)
+    if badge_count != actual_count:
+        return [f"README.md skills badge count {badge_count} does not match actual skill count {actual_count}"]
+    return []
+
+
 def main() -> int:
     if not SKILLS_DIR.exists():
         print("Missing skills/ directory", file=sys.stderr)
@@ -229,6 +372,8 @@ def main() -> int:
     for skill_dir in skill_dirs:
         errors.extend(validate_skill(skill_dir))
     errors.extend(validate_packs(skill_dirs))
+    errors.extend(validate_registry(skill_dirs))
+    errors.extend(validate_readme_badge(skill_dirs))
 
     if errors:
         print("Skill validation failed:", file=sys.stderr)

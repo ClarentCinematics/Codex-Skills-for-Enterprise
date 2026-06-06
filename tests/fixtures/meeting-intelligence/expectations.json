@@ -1,0 +1,6 @@
+{
+  "skill": "meeting-intelligence",
+  "required_sections": ["Decisions", "Action Items", "Risks", "Follow-Up Email"],
+  "forbidden_claims": ["customer names", "revenue impact", "executive approval"],
+  "required_caveats": ["owner not stated", "date not stated", "rollback criteria unresolved"]
+}

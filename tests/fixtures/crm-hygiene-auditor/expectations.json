@@ -1,0 +1,6 @@
+{
+  "skill": "crm-hygiene-auditor",
+  "required_sections": ["Audit Summary", "Critical Issues", "Pipeline / Forecast Risk", "Cleanup Actions"],
+  "forbidden_claims": ["owner name", "next step content", "close-date rationale", "forecast certainty"],
+  "required_caveats": ["owner missing", "next step missing", "close-date rationale not stated"]
+}

@@ -1,0 +1,6 @@
+{
+  "skill": "cao-operating-pulse",
+  "required_sections": ["AI Weather Report", "30-Second Board Slide", "Hype-o-meter", "Portfolio Pulse", "Governance & Shadow AI", "Decisions Needed"],
+  "forbidden_claims": ["ROI", "legal approval", "compliance approval", "production readiness", "budget"],
+  "required_caveats": ["vendor claim unverified", "ROI not stated", "approval status not stated"]
+}

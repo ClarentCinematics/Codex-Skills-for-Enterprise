@@ -1,0 +1,6 @@
+{
+  "skill": "knowledge-base-capture",
+  "required_sections": ["Title", "Audience", "Summary", "Ownership And Freshness", "Review Questions"],
+  "forbidden_claims": ["owner name", "approval status", "escalation path", "production safety guarantee"],
+  "required_caveats": ["owner not stated", "review date stale", "TBD unresolved"]
+}

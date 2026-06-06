@@ -1,0 +1,169 @@
+{
+  "skills": [
+    {
+      "name": "account-research-brief",
+      "pack": "revenue-ops",
+      "maturity": 2,
+      "audience": "Sales and revenue teams",
+      "primary_artifacts": ["account notes", "research excerpts", "market signals"],
+      "has_references": true,
+      "has_scripts": false,
+      "risk_level": "medium",
+      "featured": false
+    },
+    {
+      "name": "automation-opportunity-map",
+      "pack": "executive-ops",
+      "maturity": 2,
+      "audience": "Operations and transformation teams",
+      "primary_artifacts": ["workflow notes", "process descriptions", "system constraints"],
+      "has_references": true,
+      "has_scripts": false,
+      "risk_level": "medium",
+      "featured": false
+    },
+    {
+      "name": "cao-operating-pulse",
+      "pack": "executive-ops",
+      "maturity": 2,
+      "audience": "Chief AI Officers and AI operating teams",
+      "primary_artifacts": ["AI initiative updates", "adoption signals", "governance notes"],
+      "has_references": true,
+      "has_scripts": false,
+      "risk_level": "high",
+      "featured": true
+    },
+    {
+      "name": "ci-failure-triage",
+      "pack": "engineering-ops",
+      "maturity": 3,
+      "audience": "Engineering and platform teams",
+      "primary_artifacts": ["CI logs", "test output", "pipeline summaries"],
+      "has_references": true,
+      "has_scripts": true,
+      "risk_level": "medium",
+      "featured": true
+    },
+    {
+      "name": "crm-hygiene-auditor",
+      "pack": "revenue-ops",
+      "maturity": 3,
+      "audience": "Revenue operations and sales managers",
+      "primary_artifacts": ["CRM CSV exports", "opportunity notes", "forecast inputs"],
+      "has_references": true,
+      "has_scripts": true,
+      "risk_level": "high",
+      "featured": true
+    },
+    {
+      "name": "decision-memo",
+      "pack": "executive-ops",
+      "maturity": 2,
+      "audience": "Leadership and strategy teams",
+      "primary_artifacts": ["decision notes", "options", "tradeoff summaries"],
+      "has_references": true,
+      "has_scripts": false,
+      "risk_level": "medium",
+      "featured": false
+    },
+    {
+      "name": "knowledge-base-capture",
+      "pack": "knowledge-ops",
+      "maturity": 3,
+      "audience": "Knowledge, support, and operations teams",
+      "primary_artifacts": ["support threads", "incident learnings", "SOP drafts"],
+      "has_references": true,
+      "has_scripts": true,
+      "risk_level": "medium",
+      "featured": true
+    },
+    {
+      "name": "meeting-intelligence",
+      "pack": "executive-ops",
+      "maturity": 2,
+      "audience": "Executives, operators, and project leaders",
+      "primary_artifacts": ["meeting notes", "transcripts", "recap drafts"],
+      "has_references": true,
+      "has_scripts": false,
+      "risk_level": "medium",
+      "featured": true
+    },
+    {
+      "name": "policy-impact-analysis",
+      "pack": "knowledge-ops",
+      "maturity": 2,
+      "audience": "Policy, compliance, and operations teams",
+      "primary_artifacts": ["policy text", "regulatory guidance", "internal standards"],
+      "has_references": true,
+      "has_scripts": false,
+      "risk_level": "high",
+      "featured": false
+    },
+    {
+      "name": "pr-review-brief",
+      "pack": "engineering-ops",
+      "maturity": 2,
+      "audience": "Engineering teams",
+      "primary_artifacts": ["pull requests", "diffs", "test plans"],
+      "has_references": true,
+      "has_scripts": false,
+      "risk_level": "medium",
+      "featured": false
+    },
+    {
+      "name": "project-status-brief",
+      "pack": "executive-ops",
+      "maturity": 2,
+      "audience": "Program and project leaders",
+      "primary_artifacts": ["project updates", "milestone notes", "risk logs"],
+      "has_references": true,
+      "has_scripts": false,
+      "risk_level": "medium",
+      "featured": false
+    },
+    {
+      "name": "proposal-drafting-assistant",
+      "pack": "revenue-ops",
+      "maturity": 2,
+      "audience": "Sales and customer teams",
+      "primary_artifacts": ["customer needs", "solution notes", "proposal constraints"],
+      "has_references": true,
+      "has_scripts": false,
+      "risk_level": "high",
+      "featured": false
+    },
+    {
+      "name": "release-notes-generator",
+      "pack": "engineering-ops",
+      "maturity": 2,
+      "audience": "Product and engineering teams",
+      "primary_artifacts": ["commits", "PRs", "tickets", "changelog fragments"],
+      "has_references": true,
+      "has_scripts": false,
+      "risk_level": "medium",
+      "featured": false
+    },
+    {
+      "name": "research-synthesis-brief",
+      "pack": "knowledge-ops",
+      "maturity": 2,
+      "audience": "Strategy and research teams",
+      "primary_artifacts": ["source excerpts", "research notes", "reports"],
+      "has_references": true,
+      "has_scripts": false,
+      "risk_level": "medium",
+      "featured": false
+    },
+    {
+      "name": "weekly-executive-report",
+      "pack": "executive-ops",
+      "maturity": 2,
+      "audience": "Executive and operating teams",
+      "primary_artifacts": ["weekly updates", "team reports", "metric notes"],
+      "has_references": true,
+      "has_scripts": false,
+      "risk_level": "medium",
+      "featured": false
+    }
+  ]
+}

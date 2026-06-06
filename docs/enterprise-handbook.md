@@ -124,6 +124,23 @@ python3 skills/knowledge-base-capture/scripts/check_kb_metadata.py --input /tmp/
 
 Script output is evidence, not final judgment. Codex still uses the skill workflow to produce the final brief, audit, or recommendation.
 
+## Quality Proof
+
+The repository includes deterministic proof artifacts so skill quality can be inspected without relying on informal claims.
+
+- `skill-registry.json` records catalog metadata, maturity, pack assignment, audience, risk level, and featured status.
+- `scripts/validate_skills.py` validates skill structure, pack consistency, registry consistency, README skill count, helper scripts, and maturity expectations.
+- `docs/sample-outputs.md` shows fictional outputs for featured skills, including caveats and facts that must not be invented.
+- `tests/fixtures/` stores deterministic smoke fixtures for featured skills.
+- `tests/run_smoke_tests.py` validates fixture completeness and expectation schema without calling an LLM.
+
+Recommended proof commands:
+
+```bash
+python3 scripts/validate_skills.py
+python3 tests/run_smoke_tests.py
+```
+
 ## Proposed Workflows
 
 ### Executive Operating Rhythm
@@ -283,4 +300,5 @@ As of 2026-06-06:
 - 15 skills are present.
 - Validation passes with `python3 scripts/validate_skills.py`.
 - Level 3 helper scripts exist for CI triage, CRM hygiene auditing, and KB metadata checks.
+- Registry metadata and smoke fixtures support the five featured skills.
 - `main` is the release branch.
