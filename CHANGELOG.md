@@ -4,6 +4,7 @@ All notable repository-level changes are summarized here. Skill behavior changes
 
 ## 2026-06-06
 
+- Added a concise showcase post for sharing the `v0.1.0` catalog and featured workflows.
 - Added MIT license, roadmap, generated catalog workflow, fuller CI coverage, and `v0.1.0` release readiness.
 - Added `skill-registry.json`, registry-backed validation checks, sample outputs, and deterministic smoke fixtures for featured skills.
 - Added the `cao-operating-pulse` skill for Chief AI Officer operating rhythm, portfolio, governance, and adoption briefs.

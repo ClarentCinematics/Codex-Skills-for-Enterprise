@@ -55,6 +55,7 @@ The repository is intentionally conservative. Skills are not allowed to invent m
 | [Enterprise Handbook](docs/enterprise-handbook.md) | Company brief, user manual, proposed workflows, and maintenance model in one file. |
 | [Catalog](docs/catalog.md) | Registry-generated skill maturity, pack, risk, fixture, and featured-status table. |
 | [Sample Outputs](docs/sample-outputs.md) | Fictional examples showing output shape, caveats, and must-not-invent behavior. |
+| [Showcase Post](docs/showcase-post.md) | Concise public demo copy for sharing the `v0.1.0` catalog and featured workflows. |
 | [Roadmap](ROADMAP.md) | Current maturity direction, planned pack areas, Level 3 candidates, and out-of-scope boundaries. |
 | [Enterprise Adoption Guide](docs/adoption-guide.md) | Pilot-to-rollout model for introducing skills as operating standards. |
 | [Skill Packs](docs/skill-packs.md) | Pack-level installation and adoption guidance. |
@@ -206,6 +207,7 @@ See [Enterprise Handbook](docs/enterprise-handbook.md#proposed-workflows) for de
 |   |-- forward-test-playbook.md
 |   |-- maturity-levels.md
 |   |-- sample-outputs.md
+|   |-- showcase-post.md
 |   |-- script-assisted-workflows.md
 |   |-- skill-packs.md
 |   |-- skill-quality-standard.md
