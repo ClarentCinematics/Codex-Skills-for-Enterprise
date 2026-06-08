@@ -3,6 +3,7 @@
 [![Skills](https://img.shields.io/badge/skills-15-0f766e)](#skill-catalog)
 [![Validation](https://github.com/ClarentCinematics/Codex-Skills-for-Enterprise/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/ClarentCinematics/Codex-Skills-for-Enterprise/actions/workflows/validate-skills.yml)
 [![Maturity](https://img.shields.io/badge/maturity-Level%202--3-2563eb)](docs/maturity-levels.md)
+[![License: MIT](https://img.shields.io/badge/license-MIT-111827)](LICENSE)
 [![Codex Ready](https://img.shields.io/badge/Codex-ready-111827)](#quickstart)
 
 <p align="center">
@@ -52,7 +53,9 @@ The repository is intentionally conservative. Skills are not allowed to invent m
 | Document | Use it for |
 | --- | --- |
 | [Enterprise Handbook](docs/enterprise-handbook.md) | Company brief, user manual, proposed workflows, and maintenance model in one file. |
+| [Catalog](docs/catalog.md) | Registry-generated skill maturity, pack, risk, fixture, and featured-status table. |
 | [Sample Outputs](docs/sample-outputs.md) | Fictional examples showing output shape, caveats, and must-not-invent behavior. |
+| [Roadmap](ROADMAP.md) | Current maturity direction, planned pack areas, Level 3 candidates, and out-of-scope boundaries. |
 | [Enterprise Adoption Guide](docs/adoption-guide.md) | Pilot-to-rollout model for introducing skills as operating standards. |
 | [Skill Packs](docs/skill-packs.md) | Pack-level installation and adoption guidance. |
 | [Skill Quality Standard](docs/skill-quality-standard.md) | Required structure, instruction quality, and readiness bar. |
@@ -185,6 +188,8 @@ See [Enterprise Handbook](docs/enterprise-handbook.md#proposed-workflows) for de
 |   |-- PULL_REQUEST_TEMPLATE.md
 |   `-- workflows/
 |-- CHANGELOG.md
+|-- LICENSE
+|-- ROADMAP.md
 |-- SECURITY.md
 |-- SUPPORT.md
 |-- README.md
@@ -194,6 +199,7 @@ See [Enterprise Handbook](docs/enterprise-handbook.md#proposed-workflows) for de
 |-- docs/
 |   |-- adoption-guide.md
 |   |-- adapter-patterns.md
+|   |-- catalog.md
 |   |-- curation-policy.md
 |   |-- enterprise-handbook.md
 |   |-- examples.md
@@ -215,6 +221,7 @@ See [Enterprise Handbook](docs/enterprise-handbook.md#proposed-workflows) for de
 |   |-- skill-review-checklist.md
 |   `-- trigger-examples.md
 |-- scripts/
+|   |-- generate_catalog.py
 |   |-- install_skill.py
 |   `-- validate_skills.py
 `-- tests/
@@ -261,6 +268,7 @@ Every skill in this repository must meet a strict v1 standard:
 - no auxiliary README, changelog, or installation files inside skill folders;
 - realistic enterprise use cases documented at the repo level;
 - registry-backed validation through `scripts/validate_skills.py`;
+- generated catalog validation through `docs/catalog.md`;
 - smoke fixture validation through `tests/run_smoke_tests.py`;
 - manual review for sensitive or executive-facing output.
 
@@ -278,9 +286,10 @@ Current maintained state as of 2026-06-06:
 
 - 15 skills are available across 4 operating areas.
 - `main` is expected to remain validated and installable.
-- GitHub Actions runs skill validation on pull requests and pushes to `main`.
+- GitHub Actions runs skill validation, smoke fixture validation, and Python syntax checks on pull requests and pushes to `main`.
 - Level 3 helper scripts are included for CI triage, CRM hygiene auditing, and KB metadata checks.
 - `skill-registry.json` tracks catalog metadata and featured skills.
+- `docs/catalog.md` is generated from the registry.
 - Smoke fixtures cover the five featured skills.
 - Public contribution intake uses issue and pull request templates.
 - Maintenance expectations are documented in the [Enterprise Handbook](docs/enterprise-handbook.md#maintenance-model).

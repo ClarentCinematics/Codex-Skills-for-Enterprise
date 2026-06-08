@@ -129,6 +129,7 @@ Script output is evidence, not final judgment. Codex still uses the skill workfl
 The repository includes deterministic proof artifacts so skill quality can be inspected without relying on informal claims.
 
 - `skill-registry.json` records catalog metadata, maturity, pack assignment, audience, risk level, and featured status.
+- `docs/catalog.md` is generated from the registry and gives reviewers a compact maturity table.
 - `scripts/validate_skills.py` validates skill structure, pack consistency, registry consistency, README skill count, helper scripts, and maturity expectations.
 - `docs/sample-outputs.md` shows fictional outputs for featured skills, including caveats and facts that must not be invented.
 - `tests/fixtures/` stores deterministic smoke fixtures for featured skills.
@@ -137,6 +138,7 @@ The repository includes deterministic proof artifacts so skill quality can be in
 Recommended proof commands:
 
 ```bash
+python3 scripts/generate_catalog.py
 python3 scripts/validate_skills.py
 python3 tests/run_smoke_tests.py
 ```
@@ -263,8 +265,10 @@ python3 scripts/validate_skills.py
 For script-assisted skills, also run syntax checks:
 
 ```bash
-python3 -m py_compile scripts/validate_skills.py scripts/install_skill.py skills/*/scripts/*.py
+python3 -m py_compile scripts/validate_skills.py scripts/install_skill.py scripts/generate_catalog.py tests/run_smoke_tests.py
 ```
+
+Run `python3 scripts/generate_catalog.py` after changes to `skill-registry.json`.
 
 ### Release Hygiene
 
@@ -274,8 +278,10 @@ For each release-quality update:
 2. Pull or fetch remote changes before editing.
 3. Keep unrelated changes in separate commits.
 4. Update `CHANGELOG.md` for user-visible changes.
-5. Run validation.
-6. Push only after validation passes.
+5. Regenerate `docs/catalog.md` when registry metadata changes.
+6. Run validation, smoke tests, and syntax checks.
+7. Push only after validation passes.
+8. Create annotated tags for release-quality milestones.
 
 ### Branch Policy
 
@@ -301,4 +307,5 @@ As of 2026-06-06:
 - Validation passes with `python3 scripts/validate_skills.py`.
 - Level 3 helper scripts exist for CI triage, CRM hygiene auditing, and KB metadata checks.
 - Registry metadata and smoke fixtures support the five featured skills.
+- `docs/catalog.md` is generated from `skill-registry.json`.
 - `main` is the release branch.

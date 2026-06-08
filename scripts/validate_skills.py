@@ -9,6 +9,8 @@ import stat
 import sys
 from pathlib import Path
 
+from generate_catalog import CATALOG_FILE, generate_catalog
+
 try:
     import yaml
 except ImportError:  # pragma: no cover - depends on local environment
@@ -358,6 +360,19 @@ def validate_readme_badge(skill_dirs: list[Path]) -> list[str]:
     return []
 
 
+def validate_catalog() -> list[str]:
+    if not CATALOG_FILE.exists():
+        return ["missing docs/catalog.md"]
+    _registry_data, registry_errors = load_json_file(REGISTRY_FILE, "skill-registry.json")
+    if registry_errors:
+        return []
+    actual = CATALOG_FILE.read_text(encoding="utf-8")
+    expected = generate_catalog()
+    if actual != expected:
+        return ["docs/catalog.md is out of date; run python3 scripts/generate_catalog.py"]
+    return []
+
+
 def main() -> int:
     if not SKILLS_DIR.exists():
         print("Missing skills/ directory", file=sys.stderr)
@@ -374,6 +389,7 @@ def main() -> int:
     errors.extend(validate_packs(skill_dirs))
     errors.extend(validate_registry(skill_dirs))
     errors.extend(validate_readme_badge(skill_dirs))
+    errors.extend(validate_catalog())
 
     if errors:
         print("Skill validation failed:", file=sys.stderr)

@@ -54,7 +54,9 @@ For new skills or meaningful skill changes, include this information in the pull
 6. Run validation.
 
 ```bash
+python3 scripts/generate_catalog.py
 python3 scripts/validate_skills.py
+python3 tests/run_smoke_tests.py
 ```
 
 7. Test at least one realistic enterprise prompt before submitting.

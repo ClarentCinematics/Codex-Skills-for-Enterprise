@@ -23,3 +23,9 @@ jobs:
 
       - name: Validate skills
         run: python scripts/validate_skills.py
+
+      - name: Validate smoke fixtures
+        run: python tests/run_smoke_tests.py
+
+      - name: Check Python syntax
+        run: python -m py_compile scripts/validate_skills.py scripts/install_skill.py scripts/generate_catalog.py tests/run_smoke_tests.py
