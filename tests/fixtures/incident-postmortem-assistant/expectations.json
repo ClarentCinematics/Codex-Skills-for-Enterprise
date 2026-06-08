@@ -1,0 +1,6 @@
+{
+  "skill": "incident-postmortem-assistant",
+  "required_sections": ["Incident Summary", "Timeline", "Impact", "Root-Cause Hypotheses", "Corrective Actions", "Caveats"],
+  "forbidden_claims": ["final severity", "confirmed root cause", "customer notification sent", "revenue impact"],
+  "required_caveats": ["severity not stated", "impact duration not stated", "customer notification owner not stated"]
+}

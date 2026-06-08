@@ -17,7 +17,8 @@ This repository is built for:
 - executive operations teams that need cleaner decisions, reports, and follow-ups;
 - engineering organizations that want faster triage and release communication;
 - revenue operations teams improving CRM quality and account workflows;
-- knowledge teams preserving institutional knowledge in reusable form.
+- knowledge teams preserving institutional knowledge in reusable form;
+- support, product, data, reliability, security, legal, and procurement teams turning repeated operational evidence into reviewable workflows.
 
 ### What A Company Gets
 
@@ -51,6 +52,11 @@ Start with the artifact and the business outcome, not the skill name.
 | CRM CSV export or opportunity notes | hygiene findings and cleanup actions | `crm-hygiene-auditor` |
 | AI initiative portfolio notes | CAO operating pulse | `cao-operating-pulse` |
 | support thread or incident learning | reusable KB article | `knowledge-base-capture` |
+| incident timeline or alert notes | blameless postmortem | `incident-postmortem-assistant` |
+| ticket subjects or support export | repeated themes and deflection candidates | `support-deflection-miner` |
+| CSV sample or schema notes | data-quality findings | `data-quality-triage` |
+| PRD draft or feature notes | acceptance criteria and test scenarios | `requirements-to-acceptance-criteria` |
+| vendor questionnaire or risk packet | security evidence gaps and review questions | `vendor-security-review` |
 
 If no skill clearly fits, use the workflow map template before creating a new one.
 
@@ -120,6 +126,11 @@ Some Level 3 skills include helper scripts for deterministic checks.
 python3 skills/ci-failure-triage/scripts/extract_ci_signal.py --input /tmp/ci.log
 python3 skills/crm-hygiene-auditor/scripts/audit_crm_csv.py --input /tmp/pipeline.csv --today 2026-06-06
 python3 skills/knowledge-base-capture/scripts/check_kb_metadata.py --input /tmp/kb-draft.md --today 2026-06-06
+python3 skills/incident-postmortem-assistant/scripts/check_incident_timeline.py --input /tmp/incident.md
+python3 skills/support-deflection-miner/scripts/mine_support_themes.py --input /tmp/tickets.csv
+python3 skills/data-quality-triage/scripts/audit_data_quality.py --input /tmp/sample.csv --key-fields id
+python3 skills/requirements-to-acceptance-criteria/scripts/check_requirements_spec.py --input /tmp/spec.md
+python3 skills/vendor-security-review/scripts/check_vendor_security_answers.py --input /tmp/vendor-security.md
 ```
 
 Script output is evidence, not final judgment. Codex still uses the skill workflow to produce the final brief, audit, or recommendation.
@@ -193,6 +204,66 @@ Flow:
 2. Use `ci-failure-triage` to produce root-cause hypotheses and fix paths.
 3. Use `pr-review-brief` to focus review on risk, behavior, and missing tests.
 4. Use `release-notes-generator` to translate merged changes into audience-ready release communication.
+
+### Reliability Learning Loop
+
+Recommended skills:
+
+- `incident-postmortem-assistant`
+- `ci-failure-triage`
+- `project-status-brief`
+
+Flow:
+
+1. Collect incident timeline, alerts, status updates, mitigation notes, and follow-up items.
+2. Run the incident timeline checker to detect repeated timestamps, missing owners, missing actions, and unresolved markers.
+3. Use `incident-postmortem-assistant` to produce a blameless postmortem with hypotheses, corrective actions, and caveats.
+4. Convert committed follow-up work into `project-status-brief` updates until validation is complete.
+
+### Support Deflection Loop
+
+Recommended skills:
+
+- `support-deflection-miner`
+- `knowledge-base-capture`
+- `data-quality-triage`
+
+Flow:
+
+1. Export support subjects or sanitized ticket summaries.
+2. Run the support theme miner to identify repeated issue language and duplicate-looking subjects.
+3. Use `support-deflection-miner` to classify KB, macro, product, routing, and automation opportunities.
+4. Use `knowledge-base-capture` for selected KB articles and `data-quality-triage` when support data quality affects prioritization.
+
+### Product Delivery Readiness
+
+Recommended skills:
+
+- `requirements-to-acceptance-criteria`
+- `pr-review-brief`
+- `release-notes-generator`
+
+Flow:
+
+1. Collect PRD drafts, issue notes, customer asks, and known constraints.
+2. Run the requirements checker to flag missing acceptance criteria, test scenarios, dependencies, owners, and launch constraints.
+3. Use `requirements-to-acceptance-criteria` to create implementation-ready criteria and open questions.
+4. Use `pr-review-brief` and `release-notes-generator` as the work moves through review and release.
+
+### Vendor Intake Risk Review
+
+Recommended skills:
+
+- `vendor-security-review`
+- `policy-impact-analysis`
+- `decision-memo`
+
+Flow:
+
+1. Collect vendor questionnaire answers, SOC2 notes, DPA excerpts, subprocessor lists, and intended-use context.
+2. Run the vendor security checker to detect missing coverage and weak answers.
+3. Use `vendor-security-review` to prepare evidence gaps, risk questions, and required human-review notes.
+4. Use `policy-impact-analysis` and `decision-memo` when the business needs a documented risk or procurement decision.
 
 ### Revenue Operations Hygiene
 
@@ -301,11 +372,11 @@ Before merging a branch, check:
 
 ### Current Maintained State
 
-As of 2026-06-06:
+As of 2026-06-08:
 
-- 15 skills are present.
+- 20 skills are present.
 - Validation passes with `python3 scripts/validate_skills.py`.
-- Level 3 helper scripts exist for CI triage, CRM hygiene auditing, and KB metadata checks.
-- Registry metadata and smoke fixtures support the five featured skills.
+- Level 3 helper scripts exist for CI triage, CRM hygiene auditing, KB metadata checks, incident timelines, support theme mining, data-quality triage, requirements readiness, and vendor security coverage.
+- Registry metadata and smoke fixtures support the ten featured skills.
 - `docs/catalog.md` is generated from `skill-registry.json`.
 - `main` is the release branch.

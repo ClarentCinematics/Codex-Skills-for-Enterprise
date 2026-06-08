@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vendor Security Review"
+  short_description: "Find vendor security evidence gaps"
+  default_prompt: "Use $vendor-security-review to review this vendor security material for missing coverage, weak answers, follow-up questions, and caveats."

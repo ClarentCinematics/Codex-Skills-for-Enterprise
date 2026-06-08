@@ -1,0 +1,6 @@
+{
+  "skill": "requirements-to-acceptance-criteria",
+  "required_sections": ["Requirement Summary", "Acceptance Criteria", "Test Scenarios", "Dependencies", "Launch Constraints", "Caveats"],
+  "forbidden_claims": ["launch date", "metric target", "design approval", "customer commitment"],
+  "required_caveats": ["launch constraints not stated", "test scenarios missing", "acceptance criteria missing"]
+}

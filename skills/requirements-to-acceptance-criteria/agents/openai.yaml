@@ -1,0 +1,4 @@
+interface:
+  display_name: "Requirements To Acceptance Criteria"
+  short_description: "Turn rough specs into testable criteria"
+  default_prompt: "Use $requirements-to-acceptance-criteria to convert this spec into acceptance criteria, test scenarios, dependencies, launch constraints, and caveats."

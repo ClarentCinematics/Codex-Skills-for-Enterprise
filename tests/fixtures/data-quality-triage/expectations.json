@@ -1,0 +1,6 @@
+{
+  "skill": "data-quality-triage",
+  "required_sections": ["Triage Summary", "Critical Findings", "Field-Level Evidence", "Downstream Risk", "Cleanup Actions", "Caveats"],
+  "forbidden_claims": ["source of truth", "metric definition", "business owner", "full warehouse impact"],
+  "required_caveats": ["CSV sample only", "missing values not inferred", "metric definition not provided"]
+}

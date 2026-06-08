@@ -2,6 +2,13 @@
 
 All notable repository-level changes are summarized here. Skill behavior changes should also be reflected in the relevant `SKILL.md`, references, examples, or validation notes.
 
+## 2026-06-08
+
+- Added five featured Level 3 skills: `incident-postmortem-assistant`, `support-deflection-miner`, `data-quality-triage`, `requirements-to-acceptance-criteria`, and `vendor-security-review`.
+- Added deterministic helper scripts, references, smoke fixtures, and sample outputs for the new featured workflows.
+- Added `reliability-ops`, `customer-ops`, `data-ops`, `product-ops`, and `risk-governance` packs.
+- Updated registry metadata, generated catalog docs, README, handbook, script-assisted workflow docs, roadmap, and showcase copy for the 20-skill catalog.
+
 ## 2026-06-06
 
 - Added a concise showcase post for sharing the `v0.1.0` catalog and featured workflows.

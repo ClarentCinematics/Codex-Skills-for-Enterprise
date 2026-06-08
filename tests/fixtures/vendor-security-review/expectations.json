@@ -1,0 +1,6 @@
+{
+  "skill": "vendor-security-review",
+  "required_sections": ["Review Summary", "Coverage Check", "Evidence Gaps", "Risk Questions", "Human Review Required", "Caveats"],
+  "forbidden_claims": ["vendor approved", "risk accepted", "legal approval", "certified compliant"],
+  "required_caveats": ["DPA not included", "subprocessor list not included", "breach notification timing not stated"]
+}

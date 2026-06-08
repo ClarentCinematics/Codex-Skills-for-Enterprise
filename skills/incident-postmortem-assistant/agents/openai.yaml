@@ -1,0 +1,4 @@
+interface:
+  display_name: "Incident Postmortem Assistant"
+  short_description: "Create blameless incident postmortems"
+  default_prompt: "Use $incident-postmortem-assistant to turn this incident timeline into a blameless postmortem with impact, hypotheses, actions, and caveats."

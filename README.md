@@ -1,6 +1,6 @@
 # Codex Skills for Enterprise
 
-[![Skills](https://img.shields.io/badge/skills-15-0f766e)](#skill-catalog)
+[![Skills](https://img.shields.io/badge/skills-20-0f766e)](#skill-catalog)
 [![Validation](https://github.com/ClarentCinematics/Codex-Skills-for-Enterprise/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/ClarentCinematics/Codex-Skills-for-Enterprise/actions/workflows/validate-skills.yml)
 [![Maturity](https://img.shields.io/badge/maturity-Level%202--3-2563eb)](docs/maturity-levels.md)
 [![License: MIT](https://img.shields.io/badge/license-MIT-111827)](LICENSE)
@@ -18,7 +18,7 @@ Codex Skills for Enterprise is Codex-first, but the workflows are plain markdown
 
 ## Enterprise Introduction
 
-Codex Skills for Enterprise gives companies a practical operating layer for AI-assisted work. Instead of asking every employee to rediscover the right prompt, the organization can install shared skills for common workflows: leadership meetings, executive reporting, AI portfolio reviews, CI triage, CRM hygiene, account research, proposals, policy analysis, and knowledge capture.
+Codex Skills for Enterprise gives companies a practical operating layer for AI-assisted work. Instead of asking every employee to rediscover the right prompt, the organization can install shared skills for common workflows: leadership meetings, executive reporting, AI portfolio reviews, CI triage, incident postmortems, CRM hygiene, support deflection, data quality, product requirements, vendor security reviews, policy analysis, and knowledge capture.
 
 The repository is intentionally conservative. Skills are not allowed to invent missing owners, dates, metrics, customer commitments, legal conclusions, or financial values. They are designed to structure evidence, surface uncertainty, and produce artifacts a human can review, improve, and use.
 
@@ -30,6 +30,9 @@ The repository is intentionally conservative. Skills are not allowed to invent m
 | Engineering Ops | CI triage, PR review support, and release notes | Dev teams and platform operations |
 | Revenue Ops | CRM hygiene, account research, and proposal drafting | Sales, GTM, and customer success teams |
 | Knowledge Ops | Research synthesis, policy analysis, and KB capture | Strategy, operations, and knowledge teams |
+| Reliability Ops | Incident postmortems and timeline quality checks | Engineering, SRE, and incident response teams |
+| Customer Ops | Support theme mining and deflection opportunities | Support, CS, and knowledge teams |
+| Product / Data / Risk Ops | Acceptance criteria, data-quality triage, and vendor security review | Product, data, security, legal, and procurement teams |
 
 > Start with one skill, validate the output on a real artifact, and scale the pattern only after the quality bar is met.
 
@@ -73,6 +76,12 @@ The repository is intentionally conservative. Skills are not allowed to invent m
 | [`ci-failure-triage`](skills/ci-failure-triage/SKILL.md) | Adds Level 3 script-assisted CI log signal extraction for engineering teams. |
 | [`crm-hygiene-auditor`](skills/crm-hygiene-auditor/SKILL.md) | Finds pipeline data-quality risks without inventing missing CRM values. |
 | [`knowledge-base-capture`](skills/knowledge-base-capture/SKILL.md) | Converts expert knowledge into reusable KB articles with owner and freshness checks. |
+| [`cao-operating-pulse`](skills/cao-operating-pulse/SKILL.md) | Produces board-ready Chief AI Officer portfolio, governance, and adoption briefs. |
+| [`incident-postmortem-assistant`](skills/incident-postmortem-assistant/SKILL.md) | Turns incident timelines into blameless postmortems with evidence gaps and action checks. |
+| [`support-deflection-miner`](skills/support-deflection-miner/SKILL.md) | Mines repeated ticket themes into KB, product, macro, and automation opportunities. |
+| [`data-quality-triage`](skills/data-quality-triage/SKILL.md) | Audits CSV samples for nulls, duplicate keys, stale dates, and enum inconsistencies. |
+| [`requirements-to-acceptance-criteria`](skills/requirements-to-acceptance-criteria/SKILL.md) | Converts rough specs into testable acceptance criteria and launch questions. |
+| [`vendor-security-review`](skills/vendor-security-review/SKILL.md) | Checks vendor security packets for missing coverage and human-review risks. |
 
 ## Why This Exists
 
@@ -123,6 +132,36 @@ Codex Skills make that possible by giving Codex targeted procedural knowledge fo
 | [`policy-impact-analysis`](skills/policy-impact-analysis/SKILL.md) | Translate policy changes into business impact and action plans | Policies, regulations, or internal guidance need gap analysis and rollout guidance |
 | [`knowledge-base-capture`](skills/knowledge-base-capture/SKILL.md) | Preserve institutional knowledge as maintainable KB articles | Meetings, support threads, SOPs, or learnings need reusable documentation |
 
+### Reliability Ops
+
+| Skill | Enterprise outcome | Use when |
+| --- | --- | --- |
+| [`incident-postmortem-assistant`](skills/incident-postmortem-assistant/SKILL.md) | Create blameless, evidence-grounded incident postmortems | Incident timelines, alert notes, or response summaries need impact, hypotheses, actions, and caveats |
+
+### Customer Ops
+
+| Skill | Enterprise outcome | Use when |
+| --- | --- | --- |
+| [`support-deflection-miner`](skills/support-deflection-miner/SKILL.md) | Identify repeated support themes, KB gaps, and deflection candidates | Ticket subjects, support exports, or customer questions need prioritization |
+
+### Data Ops
+
+| Skill | Enterprise outcome | Use when |
+| --- | --- | --- |
+| [`data-quality-triage`](skills/data-quality-triage/SKILL.md) | Surface data-quality risks before reporting or automation decisions | CSV exports, schema notes, or dashboard samples need deterministic quality checks |
+
+### Product Ops
+
+| Skill | Enterprise outcome | Use when |
+| --- | --- | --- |
+| [`requirements-to-acceptance-criteria`](skills/requirements-to-acceptance-criteria/SKILL.md) | Convert rough requirements into testable acceptance criteria | PRDs, feature notes, or issues need implementation-ready criteria and questions |
+
+### Risk Governance
+
+| Skill | Enterprise outcome | Use when |
+| --- | --- | --- |
+| [`vendor-security-review`](skills/vendor-security-review/SKILL.md) | Prepare vendor security evidence-gap reviews | Security questionnaires, vendor notes, or procurement packets need review questions |
+
 ## Install Skills
 
 Use the commands below to inspect, preview, or install skills in a predictable way.
@@ -161,6 +200,11 @@ Existing installed skills are never overwritten unless `--force` is passed.
 | `engineering-ops` | CI triage, PR review, release communication | `python3 scripts/install_skill.py --pack engineering-ops` |
 | `revenue-ops` | CRM hygiene, account research, proposals | `python3 scripts/install_skill.py --pack revenue-ops` |
 | `knowledge-ops` | research, policy impact, knowledge-base capture | `python3 scripts/install_skill.py --pack knowledge-ops` |
+| `reliability-ops` | incident postmortems and timeline checks | `python3 scripts/install_skill.py --pack reliability-ops` |
+| `customer-ops` | support deflection and repeated issue mining | `python3 scripts/install_skill.py --pack customer-ops` |
+| `data-ops` | CSV data-quality triage | `python3 scripts/install_skill.py --pack data-ops` |
+| `product-ops` | requirements readiness and acceptance criteria | `python3 scripts/install_skill.py --pack product-ops` |
+| `risk-governance` | vendor security evidence review | `python3 scripts/install_skill.py --pack risk-governance` |
 | `all` | every skill in the repository | `python3 scripts/install_skill.py --pack all` |
 
 See [Skill Packs](docs/skill-packs.md) for pack details and adoption guidance.
@@ -176,6 +220,10 @@ The skills can be adopted as individual tools, but they are strongest when tied 
 | Engineering release readiness | `ci-failure-triage`, `pr-review-brief`, `release-notes-generator` | Faster triage, sharper review focus, and clearer release communication. |
 | Revenue operations hygiene | `crm-hygiene-auditor`, `account-research-brief`, `proposal-drafting-assistant` | Better CRM quality, account preparation, and proposal drafts. |
 | Knowledge capture and reuse | `knowledge-base-capture`, `research-synthesis-brief`, `policy-impact-analysis` | Maintainable KB articles with provenance, owners, and review questions. |
+| Reliability learning loop | `incident-postmortem-assistant`, `ci-failure-triage`, `project-status-brief` | Cleaner incident reviews, corrective actions, and recovery follow-through. |
+| Support deflection loop | `support-deflection-miner`, `knowledge-base-capture`, `data-quality-triage` | Repeated tickets become KB articles, product signals, and measurable support improvements. |
+| Product delivery readiness | `requirements-to-acceptance-criteria`, `pr-review-brief`, `release-notes-generator` | Requirements become testable implementation and release communication. |
+| Vendor intake risk review | `vendor-security-review`, `policy-impact-analysis`, `decision-memo` | Vendor evidence gaps become review questions, risk decisions, and documented next steps. |
 | Automation intake | `automation-opportunity-map`, `decision-memo`, `project-status-brief` | Prioritized automation candidates with assumptions, risks, and first experiments. |
 
 See [Enterprise Handbook](docs/enterprise-handbook.md#proposed-workflows) for detailed playbooks.
@@ -284,15 +332,15 @@ See [Maturity Levels](docs/maturity-levels.md) for a practical model that moves 
 
 ## Active Maintenance
 
-Current maintained state as of 2026-06-06:
+Current maintained state as of 2026-06-08:
 
-- 15 skills are available across 4 operating areas.
+- 20 skills are available across 9 operating packs.
 - `main` is expected to remain validated and installable.
 - GitHub Actions runs skill validation, smoke fixture validation, and Python syntax checks on pull requests and pushes to `main`.
-- Level 3 helper scripts are included for CI triage, CRM hygiene auditing, and KB metadata checks.
+- Level 3 helper scripts are included for CI triage, CRM hygiene auditing, KB metadata checks, incident timelines, support themes, data-quality triage, requirements readiness, and vendor security coverage.
 - `skill-registry.json` tracks catalog metadata and featured skills.
 - `docs/catalog.md` is generated from the registry.
-- Smoke fixtures cover the five featured skills.
+- Smoke fixtures cover the ten featured skills.
 - Public contribution intake uses issue and pull request templates.
 - Maintenance expectations are documented in the [Enterprise Handbook](docs/enterprise-handbook.md#maintenance-model).
 

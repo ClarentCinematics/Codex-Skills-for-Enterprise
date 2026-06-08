@@ -44,6 +44,11 @@ Existing skills are not overwritten unless `--force` is passed.
 | `engineering-ops` | `ci-failure-triage`, `pr-review-brief`, `release-notes-generator` | Software delivery, review quality, CI triage, release communication |
 | `revenue-ops` | `crm-hygiene-auditor`, `account-research-brief`, `proposal-drafting-assistant` | Pipeline quality, account strategy, proposal workflows |
 | `knowledge-ops` | `research-synthesis-brief`, `policy-impact-analysis`, `knowledge-base-capture` | Research, policy analysis, and institutional knowledge capture |
+| `reliability-ops` | `incident-postmortem-assistant` | Incident learning, corrective actions, and reliability follow-through |
+| `customer-ops` | `support-deflection-miner` | Repeated support issue mining, KB opportunities, and deflection planning |
+| `data-ops` | `data-quality-triage` | CSV data-quality checks before reporting, automation, or analysis |
+| `product-ops` | `requirements-to-acceptance-criteria` | Product requirement readiness, acceptance criteria, and test scenarios |
+| `risk-governance` | `vendor-security-review` | Vendor security evidence gaps, procurement questions, and review packets |
 | `all` | All skills in the repository | Full enterprise skills installation |
 
 ## Adoption Pattern

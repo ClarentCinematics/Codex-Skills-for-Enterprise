@@ -1,0 +1,4 @@
+interface:
+  display_name: "Data Quality Triage"
+  short_description: "Find CSV data-quality risks"
+  default_prompt: "Use $data-quality-triage to audit this dataset sample for nulls, duplicate keys, stale dates, enum inconsistencies, and caveats."

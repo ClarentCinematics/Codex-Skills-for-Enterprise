@@ -4,11 +4,11 @@ This roadmap describes the maturity direction for Codex Skills for Enterprise. I
 
 ## Current State
 
-- 15 skills across executive ops, engineering ops, revenue ops, and knowledge ops.
+- 20 skills across executive ops, engineering ops, revenue ops, knowledge ops, reliability ops, customer ops, data ops, product ops, and risk governance.
 - Registry-backed catalog metadata in `skill-registry.json`.
 - Generated human-readable catalog in `docs/catalog.md`.
-- Level 3 helper scripts for CI triage, CRM hygiene auditing, and KB metadata checks.
-- Smoke fixtures for the five featured skills.
+- Level 3 helper scripts for CI triage, CRM hygiene auditing, KB metadata checks, incident timelines, support themes, data-quality triage, requirements readiness, and vendor security coverage.
+- Smoke fixtures for the ten featured skills.
 - CI validation for skill structure, registry consistency, smoke fixtures, and Python syntax.
 
 ## Next Maturity Targets
@@ -23,7 +23,7 @@ This roadmap describes the maturity direction for Codex Skills for Enterprise. I
 
 Potential future packs:
 
-- `ai-governance`: AI risk register, vendor evaluation, control gap review, and board AI reporting.
+- `ai-governance`: AI risk register, control gap review, and board AI reporting.
 - `finance-ops`: budget variance, procurement intake, month-end narrative, and investment memo workflows.
 - `people-ops`: hiring scorecard synthesis, onboarding knowledge capture, performance calibration briefs.
 - `customer-success`: escalation briefs, QBR synthesis, renewal risk review, customer health narratives.
@@ -37,6 +37,8 @@ Potential helper scripts:
 - `decision-memo`: decision memo completeness checks.
 - `policy-impact-analysis`: obligation and action extraction from policy text.
 - `cao-operating-pulse`: AI portfolio table normalization.
+- `account-research-brief`: account signal extraction from sanitized research notes.
+- `proposal-drafting-assistant`: proposal completeness and review-gate checks.
 
 ## Out Of Scope For Now
 
@@ -49,4 +51,5 @@ Potential helper scripts:
 ## Release Direction
 
 - `v0.1.0`: validated enterprise skill catalog with registry, catalog generation, smoke fixtures, and MIT license.
+- Next release candidate: expanded Level 3 workflow catalog with 20 skills, 10 featured smoke fixtures, and five new operating packs.
 - Future releases should tag meaningful changes to skill count, maturity level, validation tooling, or adoption documentation.

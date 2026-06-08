@@ -1,0 +1,4 @@
+interface:
+  display_name: "Support Deflection Miner"
+  short_description: "Find repeated support themes and KB gaps"
+  default_prompt: "Use $support-deflection-miner to identify repeated support themes, duplicate-looking requests, KB opportunities, and caveats."

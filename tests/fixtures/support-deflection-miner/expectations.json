@@ -1,0 +1,6 @@
+{
+  "skill": "support-deflection-miner",
+  "required_sections": ["Deflection Summary", "Top Themes", "Duplicate-Looking Requests", "KB Opportunities", "Product / Process Signals", "Caveats"],
+  "forbidden_claims": ["total monthly ticket volume", "confirmed root cause", "SLA breach", "customer segment"],
+  "required_caveats": ["ticket subjects only", "keyword-based", "customer facts not provided"]
+}

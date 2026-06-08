@@ -56,6 +56,17 @@
       "featured": true
     },
     {
+      "name": "data-quality-triage",
+      "pack": "data-ops",
+      "maturity": 3,
+      "audience": "Data, analytics, and operations teams",
+      "primary_artifacts": ["CSV exports", "dataset samples", "schema notes"],
+      "has_references": true,
+      "has_scripts": true,
+      "risk_level": "high",
+      "featured": true
+    },
+    {
       "name": "decision-memo",
       "pack": "executive-ops",
       "maturity": 2,
@@ -75,6 +86,17 @@
       "has_references": true,
       "has_scripts": true,
       "risk_level": "medium",
+      "featured": true
+    },
+    {
+      "name": "incident-postmortem-assistant",
+      "pack": "reliability-ops",
+      "maturity": 3,
+      "audience": "Engineering, SRE, and incident response teams",
+      "primary_artifacts": ["incident timelines", "alert notes", "status updates"],
+      "has_references": true,
+      "has_scripts": true,
+      "risk_level": "high",
       "featured": true
     },
     {
@@ -144,6 +166,17 @@
       "featured": false
     },
     {
+      "name": "requirements-to-acceptance-criteria",
+      "pack": "product-ops",
+      "maturity": 3,
+      "audience": "Product managers and engineering teams",
+      "primary_artifacts": ["PRD drafts", "feature notes", "issue descriptions"],
+      "has_references": true,
+      "has_scripts": true,
+      "risk_level": "medium",
+      "featured": true
+    },
+    {
       "name": "research-synthesis-brief",
       "pack": "knowledge-ops",
       "maturity": 2,
@@ -153,6 +186,28 @@
       "has_scripts": false,
       "risk_level": "medium",
       "featured": false
+    },
+    {
+      "name": "support-deflection-miner",
+      "pack": "customer-ops",
+      "maturity": 3,
+      "audience": "Support, customer success, and knowledge teams",
+      "primary_artifacts": ["support tickets", "ticket subjects", "customer questions"],
+      "has_references": true,
+      "has_scripts": true,
+      "risk_level": "medium",
+      "featured": true
+    },
+    {
+      "name": "vendor-security-review",
+      "pack": "risk-governance",
+      "maturity": 3,
+      "audience": "Security, legal, procurement, and risk teams",
+      "primary_artifacts": ["security questionnaires", "vendor notes", "risk packets"],
+      "has_references": true,
+      "has_scripts": true,
+      "risk_level": "high",
+      "featured": true
     },
     {
       "name": "weekly-executive-report",

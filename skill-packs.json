@@ -22,6 +22,21 @@
     "policy-impact-analysis",
     "knowledge-base-capture"
   ],
+  "reliability-ops": [
+    "incident-postmortem-assistant"
+  ],
+  "customer-ops": [
+    "support-deflection-miner"
+  ],
+  "data-ops": [
+    "data-quality-triage"
+  ],
+  "product-ops": [
+    "requirements-to-acceptance-criteria"
+  ],
+  "risk-governance": [
+    "vendor-security-review"
+  ],
   "all": [
     "meeting-intelligence",
     "weekly-executive-report",
@@ -37,6 +52,11 @@
     "proposal-drafting-assistant",
     "research-synthesis-brief",
     "policy-impact-analysis",
-    "knowledge-base-capture"
+    "knowledge-base-capture",
+    "incident-postmortem-assistant",
+    "support-deflection-miner",
+    "data-quality-triage",
+    "requirements-to-acceptance-criteria",
+    "vendor-security-review"
   ]
 }

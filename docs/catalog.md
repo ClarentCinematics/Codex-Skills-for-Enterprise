@@ -4,6 +4,8 @@ This catalog is generated from `skill-registry.json`. Do not edit it by hand; ru
 
 | Skill | Pack | Maturity | Audience | Scripts | Fixtures | Risk | Featured |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| [`support-deflection-miner`](../skills/support-deflection-miner/SKILL.md) | `customer-ops` | Level 3 | Support, customer success, and knowledge teams | Yes | Yes | Medium | Yes |
+| [`data-quality-triage`](../skills/data-quality-triage/SKILL.md) | `data-ops` | Level 3 | Data, analytics, and operations teams | Yes | Yes | High | Yes |
 | [`ci-failure-triage`](../skills/ci-failure-triage/SKILL.md) | `engineering-ops` | Level 3 | Engineering and platform teams | Yes | Yes | Medium | Yes |
 | [`pr-review-brief`](../skills/pr-review-brief/SKILL.md) | `engineering-ops` | Level 2 | Engineering teams | No | No | Medium | No |
 | [`release-notes-generator`](../skills/release-notes-generator/SKILL.md) | `engineering-ops` | Level 2 | Product and engineering teams | No | No | Medium | No |
@@ -16,9 +18,12 @@ This catalog is generated from `skill-registry.json`. Do not edit it by hand; ru
 | [`knowledge-base-capture`](../skills/knowledge-base-capture/SKILL.md) | `knowledge-ops` | Level 3 | Knowledge, support, and operations teams | Yes | Yes | Medium | Yes |
 | [`policy-impact-analysis`](../skills/policy-impact-analysis/SKILL.md) | `knowledge-ops` | Level 2 | Policy, compliance, and operations teams | No | No | High | No |
 | [`research-synthesis-brief`](../skills/research-synthesis-brief/SKILL.md) | `knowledge-ops` | Level 2 | Strategy and research teams | No | No | Medium | No |
+| [`requirements-to-acceptance-criteria`](../skills/requirements-to-acceptance-criteria/SKILL.md) | `product-ops` | Level 3 | Product managers and engineering teams | Yes | Yes | Medium | Yes |
+| [`incident-postmortem-assistant`](../skills/incident-postmortem-assistant/SKILL.md) | `reliability-ops` | Level 3 | Engineering, SRE, and incident response teams | Yes | Yes | High | Yes |
 | [`account-research-brief`](../skills/account-research-brief/SKILL.md) | `revenue-ops` | Level 2 | Sales and revenue teams | No | No | Medium | No |
 | [`crm-hygiene-auditor`](../skills/crm-hygiene-auditor/SKILL.md) | `revenue-ops` | Level 3 | Revenue operations and sales managers | Yes | Yes | High | Yes |
 | [`proposal-drafting-assistant`](../skills/proposal-drafting-assistant/SKILL.md) | `revenue-ops` | Level 2 | Sales and customer teams | No | No | High | No |
+| [`vendor-security-review`](../skills/vendor-security-review/SKILL.md) | `risk-governance` | Level 3 | Security, legal, procurement, and risk teams | Yes | Yes | High | Yes |
 
 ## Maintenance
 

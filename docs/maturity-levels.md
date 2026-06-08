@@ -12,7 +12,7 @@ Use maturity levels to decide how much rigor a skill needs before broader adopti
 
 ## Current Repository Position
 
-Most skills in this repository are Level 2: concise skills with structured reference rubrics. `ci-failure-triage`, `crm-hygiene-auditor`, and `knowledge-base-capture` are Level 3 examples because they include deterministic helper scripts plus smoke-testable script interfaces. The installer and pack metadata make pack-level adoption easier, while tool-connected adapters remain optional and deliberately separate.
+Most skills in this repository are Level 2 or Level 3: concise skills with structured reference rubrics, plus deterministic helpers where repeated parsing or validation matters. Level 3 examples include `ci-failure-triage`, `crm-hygiene-auditor`, `knowledge-base-capture`, `incident-postmortem-assistant`, `support-deflection-miner`, `data-quality-triage`, `requirements-to-acceptance-criteria`, and `vendor-security-review`. The installer and pack metadata make pack-level adoption easier, while tool-connected adapters remain optional and deliberately separate.
 
 ## Advancement Rules
 
