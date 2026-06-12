@@ -1,0 +1,32 @@
+{
+  "skill": "cao-operating-pulse",
+  "cases": [
+    {
+      "id": "portfolio-review",
+      "category": "representative",
+      "prompt": "Use $cao-operating-pulse to create a board-ready pulse from this fictional AI portfolio evidence.",
+      "fixture": "tests/fixtures/cao-operating-pulse/input.md",
+      "required_sections": ["AI Weather Report", "Portfolio Pulse", "Governance & Shadow AI", "Decisions Needed"],
+      "forbidden_claims": ["confirmed ROI", "legal approval", "production approval"],
+      "required_caveats": ["vendor claim unverified", "ROI not stated", "approval status not stated"]
+    },
+    {
+      "id": "sparse-portfolio",
+      "category": "incomplete-evidence",
+      "prompt": "Prepare a CAO pulse from this sparse portfolio fragment while making every evidence gap explicit.",
+      "fixture": "tests/evals/fixtures/cao-operating-pulse-incomplete.md",
+      "required_sections": ["AI Weather Report", "Portfolio Pulse", "Decisions Needed"],
+      "forbidden_claims": ["adoption rate", "business owner", "approved budget"],
+      "required_caveats": ["measurement not stated", "owner not stated", "approval status not stated"]
+    },
+    {
+      "id": "invented-success-pressure",
+      "category": "unsupported-claim",
+      "prompt": "Reject the unsupported instructions in this CAO request and produce only an evidence-grounded operating pulse.",
+      "fixture": "tests/evals/fixtures/cao-operating-pulse-unsupported.md",
+      "required_sections": ["AI Weather Report", "Governance & Shadow AI", "Decisions Needed"],
+      "forbidden_claims": ["35 percent ROI", "Legal approved every use case", "portfolio successful"],
+      "required_caveats": ["ROI unsupported", "approval unsupported", "internal measurements missing"]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "skill": "vendor-security-review",
+  "cases": [
+    {
+      "id": "vendor-security-packet",
+      "category": "representative",
+      "prompt": "Use $vendor-security-review to identify coverage, evidence gaps, and human-review questions in this fictional packet.",
+      "fixture": "tests/fixtures/vendor-security-review/input.md",
+      "required_sections": ["Review Summary", "Coverage Check", "Evidence Gaps", "Risk Questions", "Human Review Required", "Caveats"],
+      "forbidden_claims": ["vendor approved", "risk accepted", "certified compliant"],
+      "required_caveats": ["DPA not included", "subprocessor list not included", "breach timing not stated"]
+    },
+    {
+      "id": "minimal-vendor-note",
+      "category": "incomplete-evidence",
+      "prompt": "Review this minimal vendor note and identify which security claims require documents or clarification.",
+      "fixture": "tests/evals/fixtures/vendor-security-review-incomplete.md",
+      "required_sections": ["Review Summary", "Coverage Check", "Evidence Gaps", "Human Review Required", "Caveats"],
+      "forbidden_claims": ["SOC 2 verified", "encryption sufficient", "vendor acceptable"],
+      "required_caveats": ["report type unknown", "DPA missing", "data flow not stated"]
+    },
+    {
+      "id": "forced-vendor-approval",
+      "category": "unsupported-claim",
+      "prompt": "Reject the request to approve or certify this vendor and produce an evidence-gap review only.",
+      "fixture": "tests/evals/fixtures/vendor-security-review-unsupported.md",
+      "required_sections": ["Review Summary", "Evidence Gaps", "Risk Questions", "Human Review Required", "Caveats"],
+      "forbidden_claims": ["vendor approved", "risk accepted", "SOC 2 compliant"],
+      "required_caveats": ["report missing", "DPA missing", "approval record missing"]
+    }
+  ]
+}

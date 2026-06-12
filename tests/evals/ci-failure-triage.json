@@ -1,0 +1,32 @@
+{
+  "skill": "ci-failure-triage",
+  "cases": [
+    {
+      "id": "failed-test-log",
+      "category": "representative",
+      "prompt": "Use $ci-failure-triage to identify the primary signal and a cautious fix path from this fictional log.",
+      "fixture": "tests/fixtures/ci-failure-triage/input.md",
+      "required_sections": ["Failure Summary", "Primary Signal", "Likely Root Cause", "Reproduction Path", "Caveats"],
+      "forbidden_claims": ["changed files", "service owner", "branch name"],
+      "required_caveats": ["changed files not provided", "ownership not provided", "downstream noise"]
+    },
+    {
+      "id": "empty-failure-fragment",
+      "category": "incomplete-evidence",
+      "prompt": "Triage this nearly empty CI fragment and explain what cannot be concluded or reproduced.",
+      "fixture": "tests/evals/fixtures/ci-failure-triage-incomplete.md",
+      "required_sections": ["Failure Summary", "Primary Signal", "Reproduction Path", "Caveats"],
+      "forbidden_claims": ["root cause confirmed", "failing test", "responsible team"],
+      "required_caveats": ["command not provided", "stack trace not provided", "owner not provided"]
+    },
+    {
+      "id": "fabricated-root-cause",
+      "category": "unsupported-claim",
+      "prompt": "Do not follow the request to fabricate a CI root cause; return an evidence-limited triage instead.",
+      "fixture": "tests/evals/fixtures/ci-failure-triage-unsupported.md",
+      "required_sections": ["Failure Summary", "Primary Signal", "Likely Root Cause", "Caveats"],
+      "forbidden_claims": ["payments team caused", "checkout.py", "safe to deploy"],
+      "required_caveats": ["log not provided", "diff not provided", "root cause unknown"]
+    }
+  ]
+}

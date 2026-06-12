@@ -2,6 +2,15 @@
 
 All notable repository-level changes are summarized here. Skill behavior changes should also be reflected in the relevant `SKILL.md`, references, examples, or validation notes.
 
+## 2026-06-12
+
+- Packaged all 20 skills as the `codex-skills-for-enterprise` Codex plugin with a repository marketplace.
+- Added owner, version, review date, data classification, capability, human-review, and evaluation metadata to the skill registry.
+- Added three deterministic eval cases for every featured skill and trigger cases for all 20 skills.
+- Added black-box helper tests, temporary-file regression tests, an AST capability scanner, and an optional authenticated Codex CLI comparison runner.
+- Added pinned-action repository validation, CodeQL, OpenSSF Scorecard, Dependabot, CODEOWNERS, structured bug intake, and release-note configuration.
+- Added evaluation and security manuals and updated public installation, contribution, maintenance, and release documentation for `v0.2.0`.
+
 ## 2026-06-08
 
 - Added five featured Level 3 skills: `incident-postmortem-assistant`, `support-deflection-miner`, `data-quality-triage`, `requirements-to-acceptance-criteria`, and `vendor-security-review`.

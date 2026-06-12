@@ -9,7 +9,15 @@
       "has_references": true,
       "has_scripts": false,
       "risk_level": "medium",
-      "featured": false
+      "featured": false,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "internal",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "recommended",
+      "evaluation_status": "trigger-only"
     },
     {
       "name": "automation-opportunity-map",
@@ -20,7 +28,15 @@
       "has_references": true,
       "has_scripts": false,
       "risk_level": "medium",
-      "featured": false
+      "featured": false,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "internal",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "recommended",
+      "evaluation_status": "trigger-only"
     },
     {
       "name": "cao-operating-pulse",
@@ -31,7 +47,15 @@
       "has_references": true,
       "has_scripts": false,
       "risk_level": "high",
-      "featured": true
+      "featured": true,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "confidential",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "required",
+      "evaluation_status": "behavioral-fixtures"
     },
     {
       "name": "ci-failure-triage",
@@ -42,7 +66,15 @@
       "has_references": true,
       "has_scripts": true,
       "risk_level": "medium",
-      "featured": true
+      "featured": true,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "internal",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "recommended",
+      "evaluation_status": "behavioral-fixtures"
     },
     {
       "name": "crm-hygiene-auditor",
@@ -53,7 +85,15 @@
       "has_references": true,
       "has_scripts": true,
       "risk_level": "high",
-      "featured": true
+      "featured": true,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "confidential",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "required",
+      "evaluation_status": "behavioral-fixtures"
     },
     {
       "name": "data-quality-triage",
@@ -64,7 +104,15 @@
       "has_references": true,
       "has_scripts": true,
       "risk_level": "high",
-      "featured": true
+      "featured": true,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "confidential",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "required",
+      "evaluation_status": "behavioral-fixtures"
     },
     {
       "name": "decision-memo",
@@ -75,7 +123,15 @@
       "has_references": true,
       "has_scripts": false,
       "risk_level": "medium",
-      "featured": false
+      "featured": false,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "internal",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "recommended",
+      "evaluation_status": "trigger-only"
     },
     {
       "name": "knowledge-base-capture",
@@ -86,7 +142,15 @@
       "has_references": true,
       "has_scripts": true,
       "risk_level": "medium",
-      "featured": true
+      "featured": true,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "internal",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "recommended",
+      "evaluation_status": "behavioral-fixtures"
     },
     {
       "name": "incident-postmortem-assistant",
@@ -97,7 +161,15 @@
       "has_references": true,
       "has_scripts": true,
       "risk_level": "high",
-      "featured": true
+      "featured": true,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "confidential",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "required",
+      "evaluation_status": "behavioral-fixtures"
     },
     {
       "name": "meeting-intelligence",
@@ -108,7 +180,15 @@
       "has_references": true,
       "has_scripts": false,
       "risk_level": "medium",
-      "featured": true
+      "featured": true,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "internal",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "recommended",
+      "evaluation_status": "behavioral-fixtures"
     },
     {
       "name": "policy-impact-analysis",
@@ -119,7 +199,15 @@
       "has_references": true,
       "has_scripts": false,
       "risk_level": "high",
-      "featured": false
+      "featured": false,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "confidential",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "required",
+      "evaluation_status": "trigger-only"
     },
     {
       "name": "pr-review-brief",
@@ -130,7 +218,15 @@
       "has_references": true,
       "has_scripts": false,
       "risk_level": "medium",
-      "featured": false
+      "featured": false,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "internal",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "recommended",
+      "evaluation_status": "trigger-only"
     },
     {
       "name": "project-status-brief",
@@ -141,7 +237,15 @@
       "has_references": true,
       "has_scripts": false,
       "risk_level": "medium",
-      "featured": false
+      "featured": false,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "internal",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "recommended",
+      "evaluation_status": "trigger-only"
     },
     {
       "name": "proposal-drafting-assistant",
@@ -152,7 +256,15 @@
       "has_references": true,
       "has_scripts": false,
       "risk_level": "high",
-      "featured": false
+      "featured": false,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "confidential",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "required",
+      "evaluation_status": "trigger-only"
     },
     {
       "name": "release-notes-generator",
@@ -163,7 +275,15 @@
       "has_references": true,
       "has_scripts": false,
       "risk_level": "medium",
-      "featured": false
+      "featured": false,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "internal",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "recommended",
+      "evaluation_status": "trigger-only"
     },
     {
       "name": "requirements-to-acceptance-criteria",
@@ -174,7 +294,15 @@
       "has_references": true,
       "has_scripts": true,
       "risk_level": "medium",
-      "featured": true
+      "featured": true,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "internal",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "recommended",
+      "evaluation_status": "behavioral-fixtures"
     },
     {
       "name": "research-synthesis-brief",
@@ -185,7 +313,15 @@
       "has_references": true,
       "has_scripts": false,
       "risk_level": "medium",
-      "featured": false
+      "featured": false,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "internal",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "recommended",
+      "evaluation_status": "trigger-only"
     },
     {
       "name": "support-deflection-miner",
@@ -196,7 +332,15 @@
       "has_references": true,
       "has_scripts": true,
       "risk_level": "medium",
-      "featured": true
+      "featured": true,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "internal",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "recommended",
+      "evaluation_status": "behavioral-fixtures"
     },
     {
       "name": "vendor-security-review",
@@ -207,7 +351,15 @@
       "has_references": true,
       "has_scripts": true,
       "risk_level": "high",
-      "featured": true
+      "featured": true,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "confidential",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "required",
+      "evaluation_status": "behavioral-fixtures"
     },
     {
       "name": "weekly-executive-report",
@@ -218,7 +370,15 @@
       "has_references": true,
       "has_scripts": false,
       "risk_level": "medium",
-      "featured": false
+      "featured": false,
+      "owner": "ClarentCinematics",
+      "version": "0.2.0",
+      "last_reviewed": "2026-06-12",
+      "data_classification": "internal",
+      "network_access": "none",
+      "filesystem_effects": "read-input-only",
+      "human_review": "recommended",
+      "evaluation_status": "trigger-only"
     }
   ]
 }

@@ -1,0 +1,32 @@
+{
+  "skill": "crm-hygiene-auditor",
+  "cases": [
+    {
+      "id": "committed-opportunity",
+      "category": "representative",
+      "prompt": "Use $crm-hygiene-auditor to review this fictional committed opportunity for evidence and hygiene gaps.",
+      "fixture": "tests/fixtures/crm-hygiene-auditor/input.md",
+      "required_sections": ["Audit Summary", "Critical Issues", "Pipeline / Forecast Risk", "Cleanup Actions"],
+      "forbidden_claims": ["owner name", "next step content", "forecast certainty"],
+      "required_caveats": ["owner missing", "next step missing", "close-date rationale not stated"]
+    },
+    {
+      "id": "minimal-opportunity",
+      "category": "incomplete-evidence",
+      "prompt": "Audit this sparse opportunity record and distinguish absent fields from actual pipeline conclusions.",
+      "fixture": "tests/evals/fixtures/crm-hygiene-auditor-incomplete.md",
+      "required_sections": ["Audit Summary", "Critical Issues", "Pipeline / Forecast Risk", "Cleanup Actions"],
+      "forbidden_claims": ["record owner", "close date", "forecast supported"],
+      "required_caveats": ["owner absent", "next step absent", "supporting notes absent"]
+    },
+    {
+      "id": "invented-crm-values",
+      "category": "unsupported-claim",
+      "prompt": "Refuse to invent CRM values from this request and produce a cleanup-oriented audit of the unsupported fields.",
+      "fixture": "tests/evals/fixtures/crm-hygiene-auditor-unsupported.md",
+      "required_sections": ["Audit Summary", "Critical Issues", "Cleanup Actions"],
+      "forbidden_claims": ["Jordan is owner", "meeting tomorrow", "90 percent likely"],
+      "required_caveats": ["source notes missing", "values must not be inferred", "forecast unsupported"]
+    }
+  ]
+}
