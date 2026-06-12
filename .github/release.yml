@@ -1,0 +1,21 @@
+changelog:
+  categories:
+    - title: Skills and workflows
+      labels:
+        - skill
+        - enhancement
+    - title: Quality and security
+      labels:
+        - quality
+        - security
+        - testing
+    - title: Documentation
+      labels:
+        - documentation
+    - title: Maintenance
+      labels:
+        - maintenance
+        - dependencies
+    - title: Other changes
+      labels:
+        - "*"

@@ -1,0 +1,262 @@
+{
+  "account-research-brief": {
+    "positive": [
+      "Turn these CRM notes and public company signals into an account research brief for discovery.",
+      "Map stakeholders, buying signals, risks, and outreach angles for this enterprise prospect."
+    ],
+    "paraphrases": [
+      "Prepare our sales team for the first meeting with this target account."
+    ],
+    "hard_negatives": [
+      "Audit this CRM export for blank owners and stale opportunity fields."
+    ],
+    "confusable_with": ["crm-hygiene-auditor", "proposal-drafting-assistant"]
+  },
+  "automation-opportunity-map": {
+    "positive": [
+      "Assess this manual operating process and prioritize what Codex, scripts, or integrations could automate.",
+      "Build an automation opportunity map from these workflow steps and constraints."
+    ],
+    "paraphrases": [
+      "Which parts of this repeated business process are worth automating first?"
+    ],
+    "hard_negatives": [
+      "Convert this approved feature requirement into testable acceptance criteria."
+    ],
+    "confusable_with": ["decision-memo", "requirements-to-acceptance-criteria"]
+  },
+  "cao-operating-pulse": {
+    "positive": [
+      "Create a board-ready CAO operating pulse from these AI portfolio and governance updates.",
+      "Summarize AI adoption, shadow-AI risk, initiative health, and decisions needed for the Chief AI Officer."
+    ],
+    "paraphrases": [
+      "Give leadership a concise reality check on our enterprise AI program."
+    ],
+    "hard_negatives": [
+      "Write a normal weekly project status report for the website migration."
+    ],
+    "confusable_with": ["weekly-executive-report", "automation-opportunity-map"]
+  },
+  "ci-failure-triage": {
+    "positive": [
+      "Triage this failed GitHub Actions log and identify the primary failure signal.",
+      "Explain why this test pipeline failed, how to reproduce it, and what evidence is missing."
+    ],
+    "paraphrases": [
+      "Find the first meaningful error in this noisy build output."
+    ],
+    "hard_negatives": [
+      "Review this pull request diff for behavioral risk and missing tests."
+    ],
+    "confusable_with": ["pr-review-brief", "incident-postmortem-assistant"]
+  },
+  "crm-hygiene-auditor": {
+    "positive": [
+      "Audit this opportunity export for missing owners, stale next steps, duplicates, and forecast risk.",
+      "Find CRM hygiene problems in these pipeline records without filling missing values."
+    ],
+    "paraphrases": [
+      "Tell revenue operations which records need cleanup before forecast review."
+    ],
+    "hard_negatives": [
+      "Research this single prospect and suggest discovery questions."
+    ],
+    "confusable_with": ["account-research-brief", "data-quality-triage"]
+  },
+  "data-quality-triage": {
+    "positive": [
+      "Inspect this CSV for null rates, duplicate keys, stale dates, and inconsistent enum values.",
+      "Produce a data-quality triage report from this dataset sample and schema note."
+    ],
+    "paraphrases": [
+      "Check whether this export is reliable enough for downstream reporting."
+    ],
+    "hard_negatives": [
+      "Find missing CRM next steps and unsupported sales forecast claims."
+    ],
+    "confusable_with": ["crm-hygiene-auditor", "support-deflection-miner"]
+  },
+  "decision-memo": {
+    "positive": [
+      "Turn these options and tradeoffs into a decision memo with a recommendation.",
+      "Frame this strategic choice, risks, alternatives, and implementation implications for leadership."
+    ],
+    "paraphrases": [
+      "Document the case for choosing one of these three approaches."
+    ],
+    "hard_negatives": [
+      "Summarize this week's project updates and blockers."
+    ],
+    "confusable_with": ["project-status-brief", "automation-opportunity-map"]
+  },
+  "incident-postmortem-assistant": {
+    "positive": [
+      "Create a blameless postmortem from this outage timeline and response log.",
+      "Turn these incident notes into impact, hypotheses, contributing factors, and corrective actions."
+    ],
+    "paraphrases": [
+      "Prepare the reliability review document for yesterday's service degradation."
+    ],
+    "hard_negatives": [
+      "Find the failing assertion in this CI test log."
+    ],
+    "confusable_with": ["ci-failure-triage", "project-status-brief"]
+  },
+  "knowledge-base-capture": {
+    "positive": [
+      "Turn this support thread into a maintainable knowledge-base article with ownership and review metadata.",
+      "Convert these expert process notes into a reusable internal help article."
+    ],
+    "paraphrases": [
+      "Document this troubleshooting procedure so the support team can reuse it."
+    ],
+    "hard_negatives": [
+      "Mine these ticket subjects to identify repeated support themes."
+    ],
+    "confusable_with": ["support-deflection-miner", "research-synthesis-brief"]
+  },
+  "meeting-intelligence": {
+    "positive": [
+      "Extract decisions, owners, risks, and follow-ups from these leadership meeting notes.",
+      "Turn this transcript into action items and a concise follow-up email."
+    ],
+    "paraphrases": [
+      "What did the team decide, who owes what, and what remains unresolved?"
+    ],
+    "hard_negatives": [
+      "Combine five weekly team reports into one executive status narrative."
+    ],
+    "confusable_with": ["weekly-executive-report", "project-status-brief"]
+  },
+  "policy-impact-analysis": {
+    "positive": [
+      "Analyze how this new privacy policy changes our workflows, controls, and obligations.",
+      "Map this regulatory guidance to affected teams, gaps, risks, and required actions."
+    ],
+    "paraphrases": [
+      "What operational changes does this policy update require?"
+    ],
+    "hard_negatives": [
+      "Review this vendor questionnaire for missing security evidence."
+    ],
+    "confusable_with": ["vendor-security-review", "research-synthesis-brief"]
+  },
+  "pr-review-brief": {
+    "positive": [
+      "Prepare a reviewer-ready brief for this pull request with risks and missing tests.",
+      "Summarize this diff and identify the files and behaviors that need close review."
+    ],
+    "paraphrases": [
+      "Help the reviewer focus on the dangerous parts of this code change."
+    ],
+    "hard_negatives": [
+      "Diagnose why the CI job failed after this pull request ran."
+    ],
+    "confusable_with": ["ci-failure-triage", "release-notes-generator"]
+  },
+  "project-status-brief": {
+    "positive": [
+      "Turn these milestone notes, blockers, and risks into a leadership project status brief.",
+      "Standardize these scattered program updates into health, progress, actions, and escalations."
+    ],
+    "paraphrases": [
+      "Give the steering committee a concise view of this project's current state."
+    ],
+    "hard_negatives": [
+      "Create a decision memo comparing whether to build, buy, or defer."
+    ],
+    "confusable_with": ["weekly-executive-report", "decision-memo"]
+  },
+  "proposal-drafting-assistant": {
+    "positive": [
+      "Draft an enterprise proposal from these customer needs, constraints, and solution notes.",
+      "Create a reviewable statement-of-work outline without inventing commercial terms."
+    ],
+    "paraphrases": [
+      "Turn our discovery notes into a tailored customer proposal."
+    ],
+    "hard_negatives": [
+      "Research this account before discovery and identify stakeholders."
+    ],
+    "confusable_with": ["account-research-brief", "decision-memo"]
+  },
+  "release-notes-generator": {
+    "positive": [
+      "Convert these merged pull requests and tickets into customer-facing release notes.",
+      "Write internal and external release communication from this change history."
+    ],
+    "paraphrases": [
+      "Explain what shipped, who it affects, and whether migration is required."
+    ],
+    "hard_negatives": [
+      "Review the open pull request for blockers before it merges."
+    ],
+    "confusable_with": ["pr-review-brief", "weekly-executive-report"]
+  },
+  "requirements-to-acceptance-criteria": {
+    "positive": [
+      "Convert this rough PRD into testable acceptance criteria, scenarios, dependencies, and launch questions.",
+      "Make this feature request implementation-ready without inventing missing scope."
+    ],
+    "paraphrases": [
+      "What must be true for engineering and QA to call this requirement complete?"
+    ],
+    "hard_negatives": [
+      "Review the implemented pull request for code risk and missing tests."
+    ],
+    "confusable_with": ["pr-review-brief", "automation-opportunity-map"]
+  },
+  "research-synthesis-brief": {
+    "positive": [
+      "Synthesize these reports into evidence-backed claims, contradictions, caveats, and actions.",
+      "Create a source-grounded research brief from these articles and interview excerpts."
+    ],
+    "paraphrases": [
+      "What do these sources collectively support, dispute, and leave unknown?"
+    ],
+    "hard_negatives": [
+      "Analyze this policy text against our internal controls and obligations."
+    ],
+    "confusable_with": ["policy-impact-analysis", "account-research-brief"]
+  },
+  "support-deflection-miner": {
+    "positive": [
+      "Mine these support ticket subjects for repeated themes, duplicates, and KB opportunities.",
+      "Rank the most common support issues and suggest documentation or workflow deflection candidates."
+    ],
+    "paraphrases": [
+      "What recurring customer questions should support address at scale?"
+    ],
+    "hard_negatives": [
+      "Write a finished knowledge-base article from this troubleshooting thread."
+    ],
+    "confusable_with": ["knowledge-base-capture", "data-quality-triage"]
+  },
+  "vendor-security-review": {
+    "positive": [
+      "Review this vendor security packet for SOC 2, DPA, subprocessor, retention, encryption, SSO, and audit-log gaps.",
+      "Prepare security follow-up questions from this vendor questionnaire without approving the vendor."
+    ],
+    "paraphrases": [
+      "What evidence is missing before procurement can continue its risk review?"
+    ],
+    "hard_negatives": [
+      "Analyze how a new internal security policy affects our operating controls."
+    ],
+    "confusable_with": ["policy-impact-analysis", "decision-memo"]
+  },
+  "weekly-executive-report": {
+    "positive": [
+      "Combine these weekly team updates into a concise executive report with metrics, risks, and asks.",
+      "Create a leadership-ready weekly business review narrative from these scattered status notes."
+    ],
+    "paraphrases": [
+      "What should the executive team know from this week's cross-functional updates?"
+    ],
+    "hard_negatives": [
+      "Extract decisions and action owners from one meeting transcript."
+    ],
+    "confusable_with": ["meeting-intelligence", "project-status-brief"]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "skill": "data-quality-triage",
+  "cases": [
+    {
+      "id": "csv-quality-audit",
+      "category": "representative",
+      "prompt": "Use $data-quality-triage to review this fictional CSV sample for deterministic quality findings.",
+      "fixture": "tests/fixtures/data-quality-triage/input.md",
+      "required_sections": ["Triage Summary", "Critical Findings", "Field-Level Evidence", "Downstream Risk", "Cleanup Actions", "Caveats"],
+      "forbidden_claims": ["source of truth", "business owner", "full warehouse impact"],
+      "required_caveats": ["CSV sample only", "missing values not inferred", "metric definition not provided"]
+    },
+    {
+      "id": "sparse-csv",
+      "category": "incomplete-evidence",
+      "prompt": "Assess this tiny incomplete dataset while limiting conclusions to the supplied rows and columns.",
+      "fixture": "tests/evals/fixtures/data-quality-triage-incomplete.md",
+      "required_sections": ["Triage Summary", "Critical Findings", "Field-Level Evidence", "Caveats"],
+      "forbidden_claims": ["production impact", "complete null rate", "system owner"],
+      "required_caveats": ["small sample", "schema not provided", "missing values not inferred"]
+    },
+    {
+      "id": "warehouse-certainty-pressure",
+      "category": "unsupported-claim",
+      "prompt": "Reject the request for unsupported warehouse conclusions and report only observable sample-level data issues.",
+      "fixture": "tests/evals/fixtures/data-quality-triage-unsupported.md",
+      "required_sections": ["Triage Summary", "Critical Findings", "Downstream Risk", "Caveats"],
+      "forbidden_claims": ["warehouse corrupted", "responsible data owner", "financial impact"],
+      "required_caveats": ["sample only", "owner not provided", "impact not measurable"]
+    }
+  ]
+}

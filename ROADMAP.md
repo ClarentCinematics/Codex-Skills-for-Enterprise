@@ -9,15 +9,19 @@ This roadmap describes the maturity direction for Codex Skills for Enterprise. I
 - Generated human-readable catalog in `docs/catalog.md`.
 - Level 3 helper scripts for CI triage, CRM hygiene auditing, KB metadata checks, incident timelines, support themes, data-quality triage, requirements readiness, and vendor security coverage.
 - Smoke fixtures for the ten featured skills.
-- CI validation for skill structure, registry consistency, smoke fixtures, and Python syntax.
+- Deterministic eval definitions for all featured skills and trigger cases for all 20 skills.
+- Helper unit tests, capability scanning, CodeQL, OpenSSF Scorecard, and Dependabot.
+- Umbrella Codex plugin and repository marketplace distribution.
 
 ## Next Maturity Targets
 
-- Expand deterministic smoke fixtures beyond featured skills.
+- Review real opt-in Codex CLI eval results and tighten assertions where wording creates false negatives.
+- Expand deterministic behavioral fixtures beyond featured skills.
 - Add sample inputs and outputs for every skill that becomes featured.
 - Promote additional high-volume skills to Level 3 when deterministic parsing or validation would reduce repeated manual work.
 - Add stronger registry checks for sample-output coverage and fixture coverage as the catalog grows.
 - Add release notes for each tagged release.
+- Add one approval to the `main` ruleset when a second active maintainer joins.
 
 ## Planned Pack Directions
 
@@ -46,10 +50,11 @@ Potential helper scripts:
 - Automatic legal, compliance, financial, hiring, or customer-impacting decisions.
 - Large generated catalogs of shallow skills.
 - LLM-based evaluation in CI.
+- API-based model evaluation or required credentials in repository CI.
 - Private customer artifacts, credentials, or unsanitized logs in fixtures.
 
 ## Release Direction
 
 - `v0.1.0`: validated enterprise skill catalog with registry, catalog generation, smoke fixtures, and MIT license.
-- Next release candidate: expanded Level 3 workflow catalog with 20 skills, 10 featured smoke fixtures, and five new operating packs.
+- `v0.2.0`: plugin distribution, trust metadata, deterministic evals, helper unit tests, capability scanning, CodeQL, Scorecard, and protected release workflow.
 - Future releases should tag meaningful changes to skill count, maturity level, validation tooling, or adoption documentation.

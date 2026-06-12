@@ -56,11 +56,21 @@ For new skills or meaningful skill changes, include this information in the pull
 ```bash
 python3 scripts/generate_catalog.py
 python3 scripts/validate_skills.py
+python3 scripts/validate_evals.py
+python3 scripts/scan_skill_security.py
 python3 tests/run_smoke_tests.py
+python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
-7. Test at least one realistic enterprise prompt before submitting.
-8. Update [CHANGELOG.md](CHANGELOG.md) for user-visible repository changes.
+7. Run an optional Codex comparison for featured behavior changes:
+
+```bash
+python3 scripts/run_codex_evals.py --dry-run --skill <skill-name>
+python3 scripts/run_codex_evals.py --skill <skill-name>
+```
+
+8. Test at least one realistic enterprise prompt before submitting.
+9. Update [CHANGELOG.md](CHANGELOG.md) for user-visible repository changes.
 
 ## Pull Request Standard
 

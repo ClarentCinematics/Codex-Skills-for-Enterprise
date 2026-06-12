@@ -1,0 +1,32 @@
+{
+  "skill": "knowledge-base-capture",
+  "cases": [
+    {
+      "id": "billing-sync-draft",
+      "category": "representative",
+      "prompt": "Use $knowledge-base-capture to turn this fictional draft into a maintainable article with explicit review gaps.",
+      "fixture": "tests/fixtures/knowledge-base-capture/input.md",
+      "required_sections": ["Title", "Audience", "Summary", "Ownership And Freshness", "Review Questions"],
+      "forbidden_claims": ["owner name", "approval status", "production safety guarantee"],
+      "required_caveats": ["owner not stated", "review date stale", "TBD unresolved"]
+    },
+    {
+      "id": "one-line-procedure",
+      "category": "incomplete-evidence",
+      "prompt": "Structure this sparse troubleshooting note as a draft while preserving all missing publishing metadata.",
+      "fixture": "tests/evals/fixtures/knowledge-base-capture-incomplete.md",
+      "required_sections": ["Title", "Audience", "Summary", "Ownership And Freshness", "Review Questions"],
+      "forbidden_claims": ["named owner", "approved procedure", "escalation contact"],
+      "required_caveats": ["audience missing", "owner missing", "review date missing"]
+    },
+    {
+      "id": "invented-publishing-claims",
+      "category": "unsupported-claim",
+      "prompt": "Reject the unsupported publishing claims in this request and produce a clearly blocked knowledge-base draft.",
+      "fixture": "tests/evals/fixtures/knowledge-base-capture-unsupported.md",
+      "required_sections": ["Title", "Ownership And Freshness", "Review Questions"],
+      "forbidden_claims": ["Priya is owner", "production-safe", "Security approved"],
+      "required_caveats": ["owner unsupported", "approval unsupported", "escalation contact missing"]
+    }
+  ]
+}

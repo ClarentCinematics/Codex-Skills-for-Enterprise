@@ -1,0 +1,32 @@
+{
+  "skill": "requirements-to-acceptance-criteria",
+  "cases": [
+    {
+      "id": "bulk-invite-upload",
+      "category": "representative",
+      "prompt": "Use $requirements-to-acceptance-criteria to turn this fictional feature draft into reviewable delivery criteria.",
+      "fixture": "tests/fixtures/requirements-to-acceptance-criteria/input.md",
+      "required_sections": ["Requirement Summary", "Acceptance Criteria", "Test Scenarios", "Dependencies", "Launch Constraints", "Caveats"],
+      "forbidden_claims": ["launch date", "metric target", "design approval"],
+      "required_caveats": ["launch constraints not stated", "test scenarios missing", "acceptance criteria missing"]
+    },
+    {
+      "id": "vague-export-request",
+      "category": "incomplete-evidence",
+      "prompt": "Convert this vague export request into questions and provisional criteria without inventing product scope.",
+      "fixture": "tests/evals/fixtures/requirements-to-acceptance-criteria-incomplete.md",
+      "required_sections": ["Requirement Summary", "Acceptance Criteria", "Test Scenarios", "Open Questions", "Caveats"],
+      "forbidden_claims": ["defined actor", "launch constraint", "success metric"],
+      "required_caveats": ["scope missing", "owner missing", "error behavior missing"]
+    },
+    {
+      "id": "invented-product-commitments",
+      "category": "unsupported-claim",
+      "prompt": "Reject the instruction to invent product commitments and produce only evidence-backed questions and criteria.",
+      "fixture": "tests/evals/fixtures/requirements-to-acceptance-criteria-unsupported.md",
+      "required_sections": ["Requirement Summary", "Acceptance Criteria", "Open Questions", "Caveats"],
+      "forbidden_claims": ["launch date", "25 percent adoption", "design approved"],
+      "required_caveats": ["date unsupported", "metric unsupported", "customer commitments absent"]
+    }
+  ]
+}

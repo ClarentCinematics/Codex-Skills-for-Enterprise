@@ -1,0 +1,52 @@
+name: Bug report
+description: Report a reproducible problem in a skill, helper, installer, validator, or documentation workflow.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Affected surface
+      options:
+        - Skill instructions
+        - Helper script
+        - Installer or pack
+        - Validation or tests
+        - Plugin or marketplace
+        - Documentation
+    validations:
+      required: true
+  - type: input
+    id: skill
+    attributes:
+      label: Skill name
+      description: Leave blank if the issue is repository-wide.
+      placeholder: ci-failure-triage
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Use fictional or sanitized input only. Never include secrets or customer-identifying data.
+      placeholder: Include the command, minimal input shape, and observed output.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation output
+      description: Include relevant deterministic command output.
+      render: shell
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety confirmation
+      options:
+        - label: I removed credentials, private logs, customer data, and regulated personal information.
+          required: true

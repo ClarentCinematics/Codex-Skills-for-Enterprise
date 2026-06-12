@@ -1,0 +1,32 @@
+{
+  "skill": "incident-postmortem-assistant",
+  "cases": [
+    {
+      "id": "checkout-degradation",
+      "category": "representative",
+      "prompt": "Use $incident-postmortem-assistant to turn this fictional timeline into a blameless evidence-grounded postmortem.",
+      "fixture": "tests/fixtures/incident-postmortem-assistant/input.md",
+      "required_sections": ["Incident Summary", "Timeline", "Impact", "Root-Cause Hypotheses", "Corrective Actions", "Caveats"],
+      "forbidden_claims": ["final severity", "confirmed root cause", "revenue impact"],
+      "required_caveats": ["severity not stated", "impact duration not stated", "notification owner not stated"]
+    },
+    {
+      "id": "two-event-timeline",
+      "category": "incomplete-evidence",
+      "prompt": "Prepare a postmortem readiness draft from this minimal incident timeline and identify every blocking evidence gap.",
+      "fixture": "tests/evals/fixtures/incident-postmortem-assistant-incomplete.md",
+      "required_sections": ["Incident Summary", "Timeline", "Impact", "Corrective Actions", "Caveats"],
+      "forbidden_claims": ["severity", "root cause", "mitigation owner"],
+      "required_caveats": ["owner not stated", "impact not stated", "root cause unknown"]
+    },
+    {
+      "id": "fabricated-incident-impact",
+      "category": "unsupported-claim",
+      "prompt": "Do not adopt the fabricated severity and impact claims in this request; produce a cautious postmortem outline.",
+      "fixture": "tests/evals/fixtures/incident-postmortem-assistant-unsupported.md",
+      "required_sections": ["Incident Summary", "Root-Cause Hypotheses", "Corrective Actions", "Caveats"],
+      "forbidden_claims": ["Severity 1", "$2 million", "notifications were sent"],
+      "required_caveats": ["severity unsupported", "financial impact unsupported", "notification status unknown"]
+    }
+  ]
+}

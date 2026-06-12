@@ -62,6 +62,15 @@ If no skill clearly fits, use the workflow map template before creating a new on
 
 ### Install Skills
 
+Install the full tagged catalog as a Codex plugin:
+
+```bash
+codex plugin marketplace add ClarentCinematics/Codex-Skills-for-Enterprise --ref v0.2.0
+codex plugin add codex-skills-for-enterprise@clarent-enterprise
+```
+
+Start a new Codex thread after installation. The plugin bundles local skills, references, and helpers only; it does not require external authentication.
+
 List skills and packs:
 
 ```bash
@@ -140,19 +149,29 @@ Script output is evidence, not final judgment. Codex still uses the skill workfl
 The repository includes deterministic proof artifacts so skill quality can be inspected without relying on informal claims.
 
 - `skill-registry.json` records catalog metadata, maturity, pack assignment, audience, risk level, and featured status.
+- Registry trust fields declare owner, version, review date, data classification, network access, filesystem effects, human review, and evaluation status.
 - `docs/catalog.md` is generated from the registry and gives reviewers a compact maturity table.
 - `scripts/validate_skills.py` validates skill structure, pack consistency, registry consistency, README skill count, helper scripts, and maturity expectations.
+- `scripts/validate_evals.py` validates three behavioral cases for every featured skill and trigger cases for all 20 skills.
+- `scripts/scan_skill_security.py` rejects undeclared helper network, process, dynamic execution, credential, destructive, and file-write capabilities.
 - `docs/sample-outputs.md` shows fictional outputs for featured skills, including caveats and facts that must not be invented.
 - `tests/fixtures/` stores deterministic smoke fixtures for featured skills.
 - `tests/run_smoke_tests.py` validates fixture completeness and expectation schema without calling an LLM.
+- `tests/test_*.py` exercises every helper CLI and repository-level failure mode.
+- CodeQL, OpenSSF Scorecard, Dependabot, and immutable action pins strengthen supply-chain and code scanning.
 
 Recommended proof commands:
 
 ```bash
 python3 scripts/generate_catalog.py
 python3 scripts/validate_skills.py
+python3 scripts/validate_evals.py
+python3 scripts/scan_skill_security.py
 python3 tests/run_smoke_tests.py
+python3 -m unittest discover -s tests -p 'test_*.py'
 ```
+
+Optional Codex CLI comparisons are documented in [Evaluation Guide](evaluation-guide.md). They use existing Codex authentication, write advisory results under ignored `eval-results/`, and are never required CI gates.
 
 ## Proposed Workflows
 
@@ -321,7 +340,8 @@ This repository should look and behave like an actively maintained enterprise as
 - `skills/`: skill instructions, references, scripts, and agent prompts.
 - `docs/`: adoption, workflow, curation, maturity, and operating guidance.
 - `scripts/`: local installer and validation tooling.
-- `.github/`: validation workflow and contribution templates.
+- `.codex-plugin/` and `.agents/plugins/`: plugin and marketplace distribution metadata.
+- `.github/`: required validation, security workflows, ownership, dependency maintenance, and contribution templates.
 
 Internal planning notes, local artifacts, and OS metadata do not belong in the public root.
 
@@ -331,12 +351,11 @@ Run before every meaningful change:
 
 ```bash
 python3 scripts/validate_skills.py
-```
-
-For script-assisted skills, also run syntax checks:
-
-```bash
-python3 -m py_compile scripts/validate_skills.py scripts/install_skill.py scripts/generate_catalog.py tests/run_smoke_tests.py
+python3 scripts/validate_evals.py
+python3 scripts/scan_skill_security.py
+python3 tests/run_smoke_tests.py
+python3 -m unittest discover -s tests -p 'test_*.py'
+PYTHONPYCACHEPREFIX=/tmp/cse-pycache python3 -m py_compile scripts/*.py tests/*.py
 ```
 
 Run `python3 scripts/generate_catalog.py` after changes to `skill-registry.json`.
@@ -350,9 +369,10 @@ For each release-quality update:
 3. Keep unrelated changes in separate commits.
 4. Update `CHANGELOG.md` for user-visible changes.
 5. Regenerate `docs/catalog.md` when registry metadata changes.
-6. Run validation, smoke tests, and syntax checks.
+6. Run validation, eval schema checks, capability scanning, smoke tests, unit tests, and syntax checks.
 7. Push only after validation passes.
-8. Create annotated tags for release-quality milestones.
+8. Merge through a pull request after required checks pass.
+9. Create annotated tags and GitHub Releases for release-quality milestones.
 
 ### Branch Policy
 
@@ -361,6 +381,8 @@ Recommended branch use:
 - `main`: validated, installable, public-facing state.
 - feature branches: one coherent skill, doc set, or script-assisted upgrade.
 - no long-lived branches without a clear owner and merge plan.
+- protected `main`: pull request required, conversations resolved, and required quality and CodeQL checks green.
+- zero required approvals while there is one maintainer; increase to one approval when a second maintainer joins.
 
 Before merging a branch, check:
 
@@ -372,11 +394,15 @@ Before merging a branch, check:
 
 ### Current Maintained State
 
-As of 2026-06-08:
+As of 2026-06-12:
 
 - 20 skills are present.
 - Validation passes with `python3 scripts/validate_skills.py`.
 - Level 3 helper scripts exist for CI triage, CRM hygiene auditing, KB metadata checks, incident timelines, support theme mining, data-quality triage, requirements readiness, and vendor security coverage.
 - Registry metadata and smoke fixtures support the ten featured skills.
+- Featured skills have three deterministic eval cases; all skills have trigger and collision cases.
+- Helper scripts have black-box tests and enforceable capability declarations.
 - `docs/catalog.md` is generated from `skill-registry.json`.
+- The repository is installable as the `codex-skills-for-enterprise` plugin.
+- Repository CI includes validation, unit tests, security scanning, CodeQL, and OpenSSF Scorecard.
 - `main` is the release branch.

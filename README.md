@@ -2,6 +2,8 @@
 
 [![Skills](https://img.shields.io/badge/skills-20-0f766e)](#skill-catalog)
 [![Validation](https://github.com/ClarentCinematics/Codex-Skills-for-Enterprise/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/ClarentCinematics/Codex-Skills-for-Enterprise/actions/workflows/validate-skills.yml)
+[![CodeQL](https://github.com/ClarentCinematics/Codex-Skills-for-Enterprise/actions/workflows/codeql.yml/badge.svg)](https://github.com/ClarentCinematics/Codex-Skills-for-Enterprise/actions/workflows/codeql.yml)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/ClarentCinematics/Codex-Skills-for-Enterprise/badge)](https://securityscorecards.dev/viewer/?uri=github.com/ClarentCinematics/Codex-Skills-for-Enterprise)
 [![Maturity](https://img.shields.io/badge/maturity-Level%202--3-2563eb)](docs/maturity-levels.md)
 [![License: MIT](https://img.shields.io/badge/license-MIT-111827)](LICENSE)
 [![Codex Ready](https://img.shields.io/badge/Codex-ready-111827)](#quickstart)
@@ -58,7 +60,9 @@ The repository is intentionally conservative. Skills are not allowed to invent m
 | [Enterprise Handbook](docs/enterprise-handbook.md) | Company brief, user manual, proposed workflows, and maintenance model in one file. |
 | [Catalog](docs/catalog.md) | Registry-generated skill maturity, pack, risk, fixture, and featured-status table. |
 | [Sample Outputs](docs/sample-outputs.md) | Fictional examples showing output shape, caveats, and must-not-invent behavior. |
-| [Showcase Post](docs/showcase-post.md) | Concise public demo copy for sharing the `v0.1.0` catalog and featured workflows. |
+| [Evaluation Guide](docs/evaluation-guide.md) | Deterministic eval schemas, trigger cases, helper tests, and optional Codex CLI comparisons. |
+| [Security Model](docs/security-model.md) | Data-handling boundaries, helper capabilities, redaction, and human-review requirements. |
+| [Showcase Post](docs/showcase-post.md) | Concise public demo copy for sharing the catalog and featured workflows. |
 | [Roadmap](ROADMAP.md) | Current maturity direction, planned pack areas, Level 3 candidates, and out-of-scope boundaries. |
 | [Enterprise Adoption Guide](docs/adoption-guide.md) | Pilot-to-rollout model for introducing skills as operating standards. |
 | [Skill Packs](docs/skill-packs.md) | Pack-level installation and adoption guidance. |
@@ -164,6 +168,19 @@ Codex Skills make that possible by giving Codex targeted procedural knowledge fo
 
 ## Install Skills
 
+### Install The Plugin
+
+The tagged plugin is the recommended installation path for the full catalog:
+
+```bash
+codex plugin marketplace add ClarentCinematics/Codex-Skills-for-Enterprise --ref v0.2.0
+codex plugin add codex-skills-for-enterprise@clarent-enterprise
+```
+
+Start a new Codex thread after installation so the bundled skills are discovered. The repository plugin is local-only: it adds instructions, references, and deterministic helpers without external authentication or network access.
+
+### Install Individual Skills
+
 Use the commands below to inspect, preview, or install skills in a predictable way.
 
 List every available skill and pack:
@@ -236,6 +253,8 @@ See [Enterprise Handbook](docs/enterprise-handbook.md#proposed-workflows) for de
 |   |-- ISSUE_TEMPLATE/
 |   |-- PULL_REQUEST_TEMPLATE.md
 |   `-- workflows/
+|-- .agents/plugins/marketplace.json
+|-- .codex-plugin/plugin.json
 |-- CHANGELOG.md
 |-- LICENSE
 |-- ROADMAP.md
@@ -251,12 +270,14 @@ See [Enterprise Handbook](docs/enterprise-handbook.md#proposed-workflows) for de
 |   |-- catalog.md
 |   |-- curation-policy.md
 |   |-- enterprise-handbook.md
+|   |-- evaluation-guide.md
 |   |-- examples.md
 |   |-- forward-test-playbook.md
 |   |-- maturity-levels.md
 |   |-- sample-outputs.md
 |   |-- showcase-post.md
 |   |-- script-assisted-workflows.md
+|   |-- security-model.md
 |   |-- skill-packs.md
 |   |-- skill-quality-standard.md
 |   `-- v2-skill-examples.md
@@ -273,10 +294,16 @@ See [Enterprise Handbook](docs/enterprise-handbook.md#proposed-workflows) for de
 |-- scripts/
 |   |-- generate_catalog.py
 |   |-- install_skill.py
+|   |-- run_codex_evals.py
+|   |-- scan_skill_security.py
+|   |-- validate_evals.py
 |   `-- validate_skills.py
 `-- tests/
+    |-- evals/
     |-- fixtures/
-    `-- run_smoke_tests.py
+    |-- trigger-cases.json
+    |-- run_smoke_tests.py
+    `-- test_*.py
 ```
 
 ## Quickstart
@@ -306,6 +333,10 @@ See [Enterprise Handbook](docs/enterprise-handbook.md#proposed-workflows) for de
 
    ```bash
    python3 scripts/validate_skills.py
+   python3 scripts/validate_evals.py
+   python3 scripts/scan_skill_security.py
+   python3 tests/run_smoke_tests.py
+   python3 -m unittest discover -s tests -p 'test_*.py'
    ```
 
 ## Quality Bar
@@ -318,8 +349,13 @@ Every skill in this repository must meet a strict v1 standard:
 - no auxiliary README, changelog, or installation files inside skill folders;
 - realistic enterprise use cases documented at the repo level;
 - registry-backed validation through `scripts/validate_skills.py`;
+- registry trust metadata for ownership, version, review date, data classification, network access, filesystem effects, human review, and evaluation status;
 - generated catalog validation through `docs/catalog.md`;
 - smoke fixture validation through `tests/run_smoke_tests.py`;
+- featured-skill eval schemas and all-skill trigger cases through `scripts/validate_evals.py`;
+- black-box helper tests and temporary-repository regression tests;
+- AST-based capability scanning through `scripts/scan_skill_security.py`;
+- pinned-action CI, CodeQL, OpenSSF Scorecard, and Dependabot;
 - manual review for sensitive or executive-facing output.
 
 See [Skill Quality Standard](docs/skill-quality-standard.md) for the full checklist.
@@ -332,15 +368,17 @@ See [Maturity Levels](docs/maturity-levels.md) for a practical model that moves 
 
 ## Active Maintenance
 
-Current maintained state as of 2026-06-08:
+Current maintained state as of 2026-06-12:
 
 - 20 skills are available across 9 operating packs.
 - `main` is expected to remain validated and installable.
-- GitHub Actions runs skill validation, smoke fixture validation, and Python syntax checks on pull requests and pushes to `main`.
+- GitHub Actions runs repository validation, helper unit tests, capability scanning, CodeQL, and scheduled OpenSSF Scorecard analysis.
 - Level 3 helper scripts are included for CI triage, CRM hygiene auditing, KB metadata checks, incident timelines, support themes, data-quality triage, requirements readiness, and vendor security coverage.
 - `skill-registry.json` tracks catalog metadata and featured skills.
 - `docs/catalog.md` is generated from the registry.
 - Smoke fixtures cover the ten featured skills.
+- Three deterministic eval cases cover each featured skill, and trigger cases cover all 20 skills.
+- The repository is packaged as the `codex-skills-for-enterprise` Codex plugin.
 - Public contribution intake uses issue and pull request templates.
 - Maintenance expectations are documented in the [Enterprise Handbook](docs/enterprise-handbook.md#maintenance-model).
 
@@ -364,6 +402,10 @@ Before opening a pull request:
 
 ```bash
 python3 scripts/validate_skills.py
+python3 scripts/validate_evals.py
+python3 scripts/scan_skill_security.py
+python3 tests/run_smoke_tests.py
+python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
 Then review the contribution against [templates/skill-review-checklist.md](templates/skill-review-checklist.md).

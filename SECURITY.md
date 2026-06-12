@@ -27,3 +27,8 @@ Security-sensitive review should focus on:
 
 Skills should mark missing or sensitive information explicitly. They should not invent facts, credentials, owners, legal conclusions, financial values, or customer commitments.
 
+See [docs/security-model.md](docs/security-model.md) for the complete trust boundary, helper capability policy, registry declarations, and threat model.
+
+## Private Reporting
+
+Use GitHub private vulnerability reporting for security-sensitive findings. If that option is unavailable, open a minimal public issue requesting a private contact channel without including exploit details or sensitive evidence.

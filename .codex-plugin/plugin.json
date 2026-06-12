@@ -1,0 +1,40 @@
+{
+  "name": "codex-skills-for-enterprise",
+  "version": "0.2.0",
+  "description": "A validated catalog of 20 enterprise Codex workflows with deterministic helpers, fixtures, trust metadata, and governance guidance.",
+  "author": {
+    "name": "ClarentCinematics",
+    "url": "https://github.com/ClarentCinematics"
+  },
+  "homepage": "https://github.com/ClarentCinematics/Codex-Skills-for-Enterprise",
+  "repository": "https://github.com/ClarentCinematics/Codex-Skills-for-Enterprise",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "enterprise",
+    "skills",
+    "operations",
+    "quality-assurance"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Codex Skills for Enterprise",
+    "shortDescription": "Validated enterprise workflows for Codex",
+    "longDescription": "Install 20 curated enterprise workflows for executive, engineering, revenue, knowledge, reliability, customer, data, product, and risk operations.",
+    "developerName": "ClarentCinematics",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Analyze",
+      "Generate"
+    ],
+    "websiteURL": "https://github.com/ClarentCinematics/Codex-Skills-for-Enterprise",
+    "defaultPrompt": [
+      "Turn these meeting notes into decisions, actions, and risks.",
+      "Audit this operational artifact and mark unsupported claims.",
+      "Choose the right enterprise skill for this workflow."
+    ],
+    "brandColor": "#0F766E",
+    "logo": "./ECSE.png"
+  }
+}

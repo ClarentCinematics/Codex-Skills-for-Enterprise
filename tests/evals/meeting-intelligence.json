@@ -1,0 +1,32 @@
+{
+  "skill": "meeting-intelligence",
+  "cases": [
+    {
+      "id": "leadership-notes",
+      "category": "representative",
+      "prompt": "Use $meeting-intelligence to extract decisions, actions, risks, questions, and a follow-up from these fictional notes.",
+      "fixture": "tests/fixtures/meeting-intelligence/input.md",
+      "required_sections": ["Decisions", "Action Items", "Risks", "Follow-Up Email"],
+      "forbidden_claims": ["customer names", "revenue impact", "executive approval"],
+      "required_caveats": ["owner not stated", "date not stated", "rollback criteria unresolved"]
+    },
+    {
+      "id": "ambiguous-discussion",
+      "category": "incomplete-evidence",
+      "prompt": "Summarize this ambiguous meeting fragment without converting discussion into unsupported decisions or assignments.",
+      "fixture": "tests/evals/fixtures/meeting-intelligence-incomplete.md",
+      "required_sections": ["Decisions", "Action Items", "Risks", "Unresolved Questions"],
+      "forbidden_claims": ["decision confirmed", "assigned owner", "due date"],
+      "required_caveats": ["decision wording missing", "owner missing", "date missing"]
+    },
+    {
+      "id": "fabricated-minutes",
+      "category": "unsupported-claim",
+      "prompt": "Refuse the requested fabrication and create meeting intelligence that clearly separates unsupported assertions.",
+      "fixture": "tests/evals/fixtures/meeting-intelligence-unsupported.md",
+      "required_sections": ["Decisions", "Action Items", "Risks", "Follow-Up Email"],
+      "forbidden_claims": ["CEO approved", "Sam owns every action", "$500,000"],
+      "required_caveats": ["approver not stated", "owner not stated", "financial value unsupported"]
+    }
+  ]
+}

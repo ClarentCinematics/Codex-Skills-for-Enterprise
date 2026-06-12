@@ -7,6 +7,7 @@ import json
 import re
 import stat
 import sys
+from datetime import date
 from pathlib import Path
 
 from generate_catalog import CATALOG_FILE, generate_catalog
@@ -22,7 +23,10 @@ SKILLS_DIR = ROOT / "skills"
 PACKS_FILE = ROOT / "skill-packs.json"
 REGISTRY_FILE = ROOT / "skill-registry.json"
 README_FILE = ROOT / "README.md"
+PLUGIN_FILE = ROOT / ".codex-plugin" / "plugin.json"
+MARKETPLACE_FILE = ROOT / ".agents" / "plugins" / "marketplace.json"
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+SEMVER_RE = re.compile(r"^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$")
 DISALLOWED_SKILL_DOCS = {
     "README.md",
     "INSTALLATION_GUIDE.md",
@@ -40,8 +44,25 @@ REGISTRY_KEYS = {
     "has_scripts",
     "risk_level",
     "featured",
+    "owner",
+    "version",
+    "last_reviewed",
+    "data_classification",
+    "network_access",
+    "filesystem_effects",
+    "human_review",
+    "evaluation_status",
 }
 VALID_RISK_LEVELS = {"low", "medium", "high"}
+VALID_DATA_CLASSIFICATIONS = {"public", "internal", "confidential", "regulated"}
+VALID_NETWORK_ACCESS = {"none", "declared"}
+VALID_FILESYSTEM_EFFECTS = {"none", "read-input-only", "writes-output"}
+VALID_HUMAN_REVIEW = {"recommended", "required"}
+VALID_EVALUATION_STATUS = {"trigger-only", "behavioral-fixtures"}
+DESCRIPTION_MAX_CHARS = 420
+DESCRIPTION_TOTAL_MAX_CHARS = 7800
+SHORT_DESCRIPTION_MIN_CHARS = 25
+SHORT_DESCRIPTION_MAX_CHARS = 64
 
 
 def validate_script_file(skill_name: str, script_path: Path) -> list[str]:
@@ -147,6 +168,8 @@ def validate_skill(skill_dir: Path) -> list[str]:
     description = str(data.get("description", "")).strip()
     if len(description) < 120:
         errors.append(f"{skill_name}: description is too short for reliable triggering")
+    if len(description) > DESCRIPTION_MAX_CHARS:
+        errors.append(f"{skill_name}: description exceeds {DESCRIPTION_MAX_CHARS} characters")
     if "use when" not in description.lower():
         errors.append(f"{skill_name}: description must include explicit 'Use when' trigger language")
 
@@ -158,11 +181,7 @@ def validate_skill(skill_dir: Path) -> list[str]:
     if not agents_file.exists():
         errors.append(f"{skill_name}: missing agents/openai.yaml")
     else:
-        agents_text = agents_file.read_text(encoding="utf-8")
-        if "default_prompt" not in agents_text:
-            errors.append(f"{skill_name}: agents/openai.yaml missing default_prompt")
-        if f"${skill_name}" not in agents_text:
-            errors.append(f"{skill_name}: default_prompt must mention ${skill_name}")
+        errors.extend(validate_openai_yaml(skill_name, agents_file))
 
     for filename in DISALLOWED_SKILL_DOCS:
         if (skill_dir / filename).exists():
@@ -176,6 +195,45 @@ def validate_skill(skill_dir: Path) -> list[str]:
 
     errors.extend(validate_scripts_dir(skill_dir))
 
+    return errors
+
+
+def validate_openai_yaml(skill_name: str, agents_file: Path) -> list[str]:
+    errors: list[str] = []
+    text = agents_file.read_text(encoding="utf-8")
+    if yaml is None:
+        display_match = re.search(r'^\s*display_name:\s*"([^"]+)"\s*$', text, re.MULTILINE)
+        short_match = re.search(r'^\s*short_description:\s*"([^"]+)"\s*$', text, re.MULTILINE)
+        prompt_match = re.search(r'^\s*default_prompt:\s*"([^"]+)"\s*$', text, re.MULTILINE)
+        interface = {
+            "display_name": display_match.group(1) if display_match else None,
+            "short_description": short_match.group(1) if short_match else None,
+            "default_prompt": prompt_match.group(1) if prompt_match else None,
+        }
+    else:
+        try:
+            parsed = yaml.safe_load(text)
+        except yaml.YAMLError as exc:
+            return [f"{skill_name}: invalid agents/openai.yaml: {exc}"]
+        if not isinstance(parsed, dict) or not isinstance(parsed.get("interface"), dict):
+            return [f"{skill_name}: agents/openai.yaml must contain an interface mapping"]
+        interface = parsed["interface"]
+
+    display_name = interface.get("display_name")
+    short_description = interface.get("short_description")
+    default_prompt = interface.get("default_prompt")
+    if not isinstance(display_name, str) or not display_name.strip():
+        errors.append(f"{skill_name}: agents/openai.yaml missing display_name")
+    if not isinstance(short_description, str):
+        errors.append(f"{skill_name}: agents/openai.yaml missing short_description")
+    elif not SHORT_DESCRIPTION_MIN_CHARS <= len(short_description.strip()) <= SHORT_DESCRIPTION_MAX_CHARS:
+        errors.append(
+            f"{skill_name}: short_description must be {SHORT_DESCRIPTION_MIN_CHARS}-{SHORT_DESCRIPTION_MAX_CHARS} characters"
+        )
+    if not isinstance(default_prompt, str) or not default_prompt.strip():
+        errors.append(f"{skill_name}: agents/openai.yaml missing default_prompt")
+    elif f"${skill_name}" not in default_prompt:
+        errors.append(f"{skill_name}: default_prompt must mention ${skill_name}")
     return errors
 
 
@@ -325,6 +383,36 @@ def validate_registry(skill_dirs: list[Path]) -> list[str]:
             if not isinstance(item[bool_key], bool):
                 errors.append(f"registry: skill '{name}' {bool_key} must be boolean")
 
+        if not isinstance(item["owner"], str) or not item["owner"].strip():
+            errors.append(f"registry: skill '{name}' owner must be a non-empty string")
+        if not isinstance(item["version"], str) or not SEMVER_RE.fullmatch(item["version"]):
+            errors.append(f"registry: skill '{name}' version must use semantic versioning")
+        try:
+            reviewed = date.fromisoformat(str(item["last_reviewed"]))
+            if reviewed > date.today():
+                errors.append(f"registry: skill '{name}' last_reviewed cannot be in the future")
+        except ValueError:
+            errors.append(f"registry: skill '{name}' last_reviewed must be YYYY-MM-DD")
+        if item["data_classification"] not in VALID_DATA_CLASSIFICATIONS:
+            errors.append(
+                f"registry: skill '{name}' data_classification must be one of "
+                f"{', '.join(sorted(VALID_DATA_CLASSIFICATIONS))}"
+            )
+        if item["network_access"] not in VALID_NETWORK_ACCESS:
+            errors.append(f"registry: skill '{name}' has invalid network_access")
+        if item["filesystem_effects"] not in VALID_FILESYSTEM_EFFECTS:
+            errors.append(f"registry: skill '{name}' has invalid filesystem_effects")
+        if item["human_review"] not in VALID_HUMAN_REVIEW:
+            errors.append(f"registry: skill '{name}' has invalid human_review")
+        if item["evaluation_status"] not in VALID_EVALUATION_STATUS:
+            errors.append(f"registry: skill '{name}' has invalid evaluation_status")
+        if item["featured"] and item["evaluation_status"] != "behavioral-fixtures":
+            errors.append(f"registry: featured skill '{name}' must use behavioral-fixtures evaluation status")
+        if not item["featured"] and item["evaluation_status"] != "trigger-only":
+            errors.append(f"registry: non-featured skill '{name}' must use trigger-only evaluation status")
+        if item["risk_level"] == "high" and item["human_review"] != "required":
+            errors.append(f"registry: high-risk skill '{name}' must require human review")
+
         skill_dir = SKILLS_DIR / name
         if skill_dir.exists():
             has_references = (skill_dir / "references").is_dir()
@@ -373,6 +461,88 @@ def validate_catalog() -> list[str]:
     return []
 
 
+def validate_description_budget(skill_dirs: list[Path]) -> list[str]:
+    total = 0
+    for skill_dir in skill_dirs:
+        data, parse_error = parse_frontmatter(skill_dir / "SKILL.md")
+        if parse_error or data is None:
+            continue
+        total += len(str(data.get("description", "")).strip())
+    if total > DESCRIPTION_TOTAL_MAX_CHARS:
+        return [f"skill descriptions total {total} characters; budget is {DESCRIPTION_TOTAL_MAX_CHARS}"]
+    return []
+
+
+def validate_plugin_metadata() -> list[str]:
+    errors: list[str] = []
+    plugin_data, plugin_errors = load_json_file(PLUGIN_FILE, ".codex-plugin/plugin.json")
+    if plugin_errors:
+        return plugin_errors
+    if not isinstance(plugin_data, dict):
+        return [".codex-plugin/plugin.json must contain an object"]
+
+    required = {"name", "version", "description", "author", "repository", "license", "skills", "interface"}
+    missing = required - set(plugin_data)
+    if missing:
+        errors.append(f"plugin manifest missing key(s): {', '.join(sorted(missing))}")
+        return errors
+    if plugin_data.get("name") != "codex-skills-for-enterprise":
+        errors.append("plugin manifest name must be codex-skills-for-enterprise")
+    if not isinstance(plugin_data.get("version"), str) or not SEMVER_RE.fullmatch(plugin_data["version"]):
+        errors.append("plugin manifest version must use semantic versioning")
+    if plugin_data.get("skills") != "./skills/":
+        errors.append("plugin manifest skills must be ./skills/")
+    if plugin_data.get("license") != "MIT":
+        errors.append("plugin manifest license must be MIT")
+    author = plugin_data.get("author")
+    if not isinstance(author, dict) or author.get("name") != "ClarentCinematics":
+        errors.append("plugin manifest author.name must be ClarentCinematics")
+    interface = plugin_data.get("interface")
+    if not isinstance(interface, dict):
+        errors.append("plugin manifest interface must be an object")
+    else:
+        for key in ("displayName", "shortDescription", "longDescription", "developerName", "category", "defaultPrompt", "logo"):
+            if key not in interface:
+                errors.append(f"plugin manifest interface missing {key}")
+        logo = interface.get("logo")
+        if isinstance(logo, str):
+            logo_path = (ROOT / logo).resolve()
+            if not logo.startswith("./") or ROOT.resolve() not in logo_path.parents or not logo_path.is_file():
+                errors.append("plugin manifest logo must point to an existing file inside the repository")
+        prompts = interface.get("defaultPrompt")
+        if not isinstance(prompts, list) or not 1 <= len(prompts) <= 3 or not all(
+            isinstance(prompt, str) and 1 <= len(prompt) <= 128 for prompt in prompts
+        ):
+            errors.append("plugin manifest defaultPrompt must contain 1-3 strings of at most 128 characters")
+
+    marketplace_data, marketplace_errors = load_json_file(MARKETPLACE_FILE, ".agents/plugins/marketplace.json")
+    if marketplace_errors:
+        return errors + marketplace_errors
+    if not isinstance(marketplace_data, dict):
+        return errors + [".agents/plugins/marketplace.json must contain an object"]
+    if marketplace_data.get("name") != "clarent-enterprise":
+        errors.append("marketplace name must be clarent-enterprise")
+    plugins = marketplace_data.get("plugins")
+    if not isinstance(plugins, list) or len(plugins) != 1 or not isinstance(plugins[0], dict):
+        errors.append("marketplace must contain exactly one plugin entry")
+    else:
+        entry = plugins[0]
+        source = entry.get("source")
+        policy = entry.get("policy")
+        if entry.get("name") != plugin_data.get("name"):
+            errors.append("marketplace plugin name must match plugin manifest")
+        expected_source = {
+            "source": "url",
+            "url": "https://github.com/ClarentCinematics/Codex-Skills-for-Enterprise.git",
+            "ref": "v0.2.0",
+        }
+        if source != expected_source:
+            errors.append("marketplace source must point to the v0.2.0 repository-root Git plugin")
+        if not isinstance(policy, dict) or policy.get("installation") != "AVAILABLE" or policy.get("authentication") != "ON_USE":
+            errors.append("marketplace policy must use AVAILABLE and ON_USE")
+    return errors
+
+
 def main() -> int:
     if not SKILLS_DIR.exists():
         print("Missing skills/ directory", file=sys.stderr)
@@ -390,6 +560,8 @@ def main() -> int:
     errors.extend(validate_registry(skill_dirs))
     errors.extend(validate_readme_badge(skill_dirs))
     errors.extend(validate_catalog())
+    errors.extend(validate_description_budget(skill_dirs))
+    errors.extend(validate_plugin_metadata())
 
     if errors:
         print("Skill validation failed:", file=sys.stderr)

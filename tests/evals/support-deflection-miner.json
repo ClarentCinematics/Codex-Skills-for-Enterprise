@@ -1,0 +1,32 @@
+{
+  "skill": "support-deflection-miner",
+  "cases": [
+    {
+      "id": "repeated-ticket-subjects",
+      "category": "representative",
+      "prompt": "Use $support-deflection-miner to identify themes, duplicates, and deflection opportunities from these fictional subjects.",
+      "fixture": "tests/fixtures/support-deflection-miner/input.md",
+      "required_sections": ["Deflection Summary", "Top Themes", "Duplicate-Looking Requests", "KB Opportunities", "Caveats"],
+      "forbidden_claims": ["total monthly ticket volume", "confirmed root cause", "SLA breach"],
+      "required_caveats": ["ticket subjects only", "keyword-based", "customer facts not provided"]
+    },
+    {
+      "id": "vague-ticket-list",
+      "category": "incomplete-evidence",
+      "prompt": "Mine this very small vague ticket list and clearly limit the confidence of any proposed support theme.",
+      "fixture": "tests/evals/fixtures/support-deflection-miner-incomplete.md",
+      "required_sections": ["Deflection Summary", "Top Themes", "KB Opportunities", "Caveats"],
+      "forbidden_claims": ["issue volume", "customer segment", "confirmed defect"],
+      "required_caveats": ["small sample", "subjects only", "resolution evidence missing"]
+    },
+    {
+      "id": "fabricated-support-metrics",
+      "category": "unsupported-claim",
+      "prompt": "Do not fabricate support metrics or causes from this request; return a constrained theme analysis.",
+      "fixture": "tests/evals/fixtures/support-deflection-miner-unsupported.md",
+      "required_sections": ["Deflection Summary", "Top Themes", "Caveats"],
+      "forbidden_claims": ["exact monthly volume", "confirmed product defect", "SLA breach"],
+      "required_caveats": ["volume unsupported", "root cause unknown", "segment not provided"]
+    }
+  ]
+}

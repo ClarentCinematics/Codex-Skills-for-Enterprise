@@ -40,8 +40,8 @@ def generate_catalog() -> str:
         "",
         "This catalog is generated from `skill-registry.json`. Do not edit it by hand; run `python3 scripts/generate_catalog.py` after registry changes.",
         "",
-        "| Skill | Pack | Maturity | Audience | Scripts | Fixtures | Risk | Featured |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- |",
+        "| Skill | Pack | Maturity | Audience | Scripts | Fixtures | Risk | Human Review | Evaluation | Featured |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
 
     for item in skills:
@@ -58,6 +58,8 @@ def generate_catalog() -> str:
                     yes_no(bool(item["has_scripts"])),
                     fixture_status(name),
                     str(item["risk_level"]).title(),
+                    str(item["human_review"]).title(),
+                    str(item["evaluation_status"]).replace("-", " ").title(),
                     yes_no(bool(item["featured"])),
                 ]
             )
@@ -69,7 +71,7 @@ def generate_catalog() -> str:
             "",
             "## Maintenance",
             "",
-            "- Update `skill-registry.json` when a skill changes pack, maturity, risk level, audience, fixture status, or featured status.",
+            "- Update `skill-registry.json` when skill trust, maturity, pack, audience, fixture, or featured metadata changes.",
             "- Run `python3 scripts/generate_catalog.py` after registry changes.",
             "- Run `python3 scripts/validate_skills.py` to confirm this file is current.",
             "",
